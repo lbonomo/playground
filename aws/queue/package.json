@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/boss.ts"
+    "dev-boss": "ts-node-dev --respawn --transpile-only ./src/boss.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "ts-node-dev": "^2.0.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1253.0"
   }
 }
