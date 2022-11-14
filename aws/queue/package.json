@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev-boss": "ts-node-dev --respawn --transpile-only ./src/boss.ts"
+    "dev-boss": "ts-node-dev --respawn --transpile-only ./src/boss.ts",
+    "dev-worker": "ts-node-dev --respawn --transpile-only ./src/worker.ts"
   },
   "author": "",
   "license": "ISC",
