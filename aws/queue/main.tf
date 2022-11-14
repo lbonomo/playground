@@ -4,8 +4,8 @@ provider "aws" {
   profile = "queue"
 }
 
-resource "aws_sqs_queue" "terraform_queue" {
-  name                      = "terraform-example-queue"
+resource "aws_sqs_queue" "example-queue" {
+  name                      = "example-queue"
   delay_seconds             = 90
   max_message_size          = 2048
   message_retention_seconds = 86400
@@ -15,4 +15,8 @@ resource "aws_sqs_queue" "terraform_queue" {
     Environment = "production"
   }
   # Get URL al final y setear el .env
+}
+
+output "sqs_url_data_source" {
+  value = aws_sqs_queue.example-queue.url
 }
