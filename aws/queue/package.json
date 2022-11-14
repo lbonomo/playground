@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "dev-boss": "ts-node-dev --respawn --transpile-only ./src/boss.ts",
     "dev-worker": "ts-node-dev --respawn --transpile-only ./src/worker.ts"
   },
