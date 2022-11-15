@@ -8,6 +8,7 @@ resource "aws_iam_policy" "ecr-full-access" {
   name        = "ecr-full-access"
   path        = "/"
   description = "ECR full access"
+  # tags        = [ "terraform" ]
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
