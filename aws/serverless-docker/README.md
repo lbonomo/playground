@@ -18,3 +18,32 @@ Run container `docker run -p 9000:8080 queue-docker:latest`
 
 To test `curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{"payload":"hello world!"}'`
 https://earthly.dev/blog/aws-lambda-docker/
+
+
+
+## Elastic Container Registry
+We need this service to storage our "image"
+
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecr:CreateRepository",
+                "ecr:DescribeRepositories",
+                "ecr:ListTagsForResource",
+                "ecr:DeleteRepository",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage",
+                "ecr:DescribeImages",
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
