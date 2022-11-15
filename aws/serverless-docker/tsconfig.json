@@ -4,10 +4,9 @@
     "esModuleInterop": true,
     "target": "es2016",
     "moduleResolution": "node",
-    "sourceMap": true,
     "outDir": "build"    
   },
   "include": [
     "./src/**/*"
-  ],
+, "app.ts"  ],
 }
