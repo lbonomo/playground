@@ -3,12 +3,18 @@ import * as dotenv from 'dotenv'
 
 // Environment vars
 dotenv.config()
-const queue_url:string = ( process.env.QUEUE_URL ) ? ( process.env.QUEUE_URL ) : ''
-const aws_profile:string = ( process.env.AWS_PROFILE ) ?  ( process.env.AWS_PROFILE ) : 'queue'
-const aws_region:string = ( process.env.AWS_REGION ) ?  ( process.env.AWS_REGION ) : 'us-east-1'
-const credentials = new AWS.SharedIniFileCredentials({ profile: aws_profile });
+const queue_url: string = (process.env.QUEUE_URL) ? (process.env.QUEUE_URL) : ''
+const aws_key: string = (process.env.AWS_KEY) ? (process.env.AWS_KEY) : ''
+const aws_secret: string = (process.env.AWS_SECRET) ? (process.env.AWS_SECRET) : ''
+const aws_region: string = (process.env.AWS_REGION) ? (process.env.AWS_REGION) : 'us-east-1'
 
 // AWS.
+const credentials = {
+    accessKeyId: aws_key,
+    secretAccessKey: aws_secret,
+};
+
+
 AWS.config.credentials = credentials
 AWS.config.update({ region: aws_region });
 const sqs = new AWS.SQS({ apiVersion: '2012-11-05' });
@@ -40,9 +46,9 @@ sqs.receiveMessage(params, function (err: any, data: any) {
             QueueUrl: queue_url,
             ReceiptHandle: data.Messages[0].ReceiptHandle
         };
-        
+
         console.log(body)
-        
+
         // Delete message
         sqs.deleteMessage(deleteParams, function (err: any, data: any) {
             if (err) {
