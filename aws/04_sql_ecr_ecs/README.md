@@ -3,8 +3,8 @@ The goal of this example is wake up one or more EC2 instance when the SQS queue 
 
 ## Docker
 https://docs.docker.com/cloud/ecs-integration/
-To build the image `docker build . -t worker`
-To run the image `docker run worker:latest`
+To build the image `docker-compose build`
+If we want to run, we can use `docker-compose run worker` this command load the `.env` file and set the environment.
 
 ## Amazon ECR 
 [Amazon Elastic Container Registry](https://aws.amazon.com/es/ecr/)
@@ -22,7 +22,6 @@ To run the image `docker run worker:latest`
 `024857090340.dkr.ecr.us-east-1.amazonaws.com/playgound:latest`
 
 ### AWS Fargate
-
 We can use Spot instances.
 
 ## Run EC2 from Docker image

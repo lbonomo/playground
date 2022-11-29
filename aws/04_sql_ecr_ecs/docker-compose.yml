@@ -4,7 +4,6 @@ services:
 
   worker:
     build: .
-    restart: always
     environment:
       QUEUE_URL: ${QUEUE_URL}
       AWS_KEY: ${AWS_KEY}
