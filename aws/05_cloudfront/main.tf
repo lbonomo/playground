@@ -18,13 +18,13 @@ provider "aws" {
 # Resource
 
 # CloudFront - Distribution
-resource "aws_cloudfront_distribution" "mainpage_distribution" {
+resource "aws_cloudfront_distribution" "queuauu_distribution" {
 
   ## Origins
   origin {
     domain_name = var.domain_name
     origin_id   = var.home_origin_id
-    origin_path = "/mainpage"
+    origin_path = "/queuauu"
     # custom_origin_config: Is necessary if you use a website as origin.  
     custom_origin_config {
       http_port              = 80
@@ -38,7 +38,7 @@ resource "aws_cloudfront_distribution" "mainpage_distribution" {
   origin {
     domain_name = var.domain_name
     origin_id   = var.about_origin_id
-    origin_path = "/mainpage/about"
+    origin_path = "/queuauu/about"
     # custom_origin_config: Is necessary if you use a website as origin.  
     custom_origin_config {
       http_port              = 80
@@ -52,7 +52,7 @@ resource "aws_cloudfront_distribution" "mainpage_distribution" {
   origin {
     domain_name = var.domain_name
     origin_id   = var.thanks_origin_id
-    origin_path = "/mainpage/thanks"
+    origin_path = "/queuauu/thanks"
     # custom_origin_config: Is necessary if you use a website as origin.  
     custom_origin_config {
       http_port              = 80
@@ -64,16 +64,11 @@ resource "aws_cloudfront_distribution" "mainpage_distribution" {
 
   enabled         = true
   is_ipv6_enabled = true
-  comment         = "mainpage.com -> lucasbonomo.com/mainpage/"
+  comment         = "queuauu.com -> lucasbonomo.com/queuauu/"
 
   tags = {
     Creator = "Terraform"
   }
-
-  # CNAME
-  # aliases = ["queuauu.com"]
-
-  ## 
 
   ## Behavior.
 
@@ -100,7 +95,7 @@ resource "aws_cloudfront_distribution" "mainpage_distribution" {
 
   ## About.
   ordered_cache_behavior {
-    path_pattern     = "/about/*"
+    path_pattern     = "/about"
     target_origin_id = var.about_origin_id
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
@@ -167,6 +162,17 @@ resource "aws_cloudfront_distribution" "mainpage_distribution" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
+  # CNAME + SSL
+  viewer_certificate {
+    # Specify this, acm_certificate_arn.
+    cloudfront_default_certificate = false
+    acm_certificate_arn = aws_acm_certificate.queuauu_cert.arn
+    # Required if you specify acm_certificate_arn.
+    ssl_support_method  = "sni-only"
+  }
+
+  aliases = [var.cname]
+
 
   # Other required blocks 
   restrictions {
@@ -174,10 +180,6 @@ resource "aws_cloudfront_distribution" "mainpage_distribution" {
       restriction_type = "whitelist"
       locations        = var.allow_countries
     }
-  }
-
-  viewer_certificate {
-    cloudfront_default_certificate = true
   }
 
 }

@@ -1,5 +1,13 @@
-resource "aws_acm_certificate" "cert" {
-  domain_name       = "queuauu.com"
+### Certificate.
+
+# data "aws_acm_certificate" "queuauu_cert" {
+#   domain = var.cname
+# }
+
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate
+resource "aws_acm_certificate" "queuauu_cert" {
+  # count             = length(aws_acm_certificate.cert[count.index].domain_validation_options) ? 0 : 1
+  domain_name       = var.cname
   validation_method = "DNS" # "EMAIL"
   tags = {
     Creator = "Terraform"
@@ -10,17 +18,15 @@ resource "aws_acm_certificate" "cert" {
   }
 }
 
-
-# Validate
-
-data "aws_route53_zone" "queuauu" {
-  name         = "queuauu.com"
+### DNS - Auto validation by DNS
+data "aws_route53_zone" "queuauu_acm_verification" {
+  name         = var.cname
   private_zone = false
 }
 
 resource "aws_route53_record" "queuauu" {
   for_each = {
-    for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.queuauu_cert.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
@@ -32,5 +38,5 @@ resource "aws_route53_record" "queuauu" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = data.aws_route53_zone.queuauu.zone_id
+  zone_id         = data.aws_route53_zone.queuauu_acm_verification.zone_id
 }

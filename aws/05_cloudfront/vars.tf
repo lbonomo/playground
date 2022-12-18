@@ -13,14 +13,20 @@ variable "aws_region" {
 
 # General
 variable "allow_countries" {
-    type = list
-    description = "List of allow countries"
-    default = ["US", "CA", "GB", "DE", "AR"]
-  
+  type        = list(any)
+  description = "List of allow countries"
+  default     = ["US", "CA", "GB", "DE", "AR"]
+}
+
+# CNAME
+
+variable "cname" {
+  type        = string
+  description = "Target domain"
+  default     = "queuauu.com"
 }
 
 # Origins
-
 ## Domain.
 variable "domain_name" {
   type        = string
