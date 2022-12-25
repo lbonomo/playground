@@ -6,7 +6,6 @@
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate
 resource "aws_acm_certificate" "queuauu_cert" {
-  # count             = length(aws_acm_certificate.cert[count.index].domain_validation_options) ? 0 : 1
   domain_name       = var.cname
   validation_method = "DNS" # "EMAIL"
   tags = {

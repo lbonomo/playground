@@ -20,10 +20,18 @@ provider "aws" {
 # CloudFront - Distribution
 resource "aws_cloudfront_distribution" "queuauu_distribution" {
 
+  enabled         = true
+  is_ipv6_enabled = true
+  comment         = "queuauu.com -> lucasbonomo.com/queuauu/"
+
+  tags = {
+    Creator = "Terraform"
+  }
+
   ## Origins
   origin {
     domain_name = var.domain_name
-    origin_id   = var.home_origin_id
+    origin_id   = var.origin_id
     origin_path = "/queuauu"
     # custom_origin_config: Is necessary if you use a website as origin.  
     custom_origin_config {
@@ -34,48 +42,13 @@ resource "aws_cloudfront_distribution" "queuauu_distribution" {
     }
   }
 
-  ## About
-  origin {
-    domain_name = var.domain_name
-    origin_id   = var.about_origin_id
-    origin_path = "/queuauu/about"
-    # custom_origin_config: Is necessary if you use a website as origin.  
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "match-viewer"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
-  }
-
-  ## Thanks
-  origin {
-    domain_name = var.domain_name
-    origin_id   = var.thanks_origin_id
-    origin_path = "/queuauu/thanks"
-    # custom_origin_config: Is necessary if you use a website as origin.  
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "match-viewer"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
-  }
-
-  enabled         = true
-  is_ipv6_enabled = true
-  comment         = "queuauu.com -> lucasbonomo.com/queuauu/"
-
-  tags = {
-    Creator = "Terraform"
-  }
 
   ## Behavior.
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = var.home_origin_id
+    target_origin_id = var.origin_id
 
     forwarded_values {
       query_string = false
@@ -89,77 +62,6 @@ resource "aws_cloudfront_distribution" "queuauu_distribution" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
-  }
-
-  # The order is important!
-
-  ## About.
-  ordered_cache_behavior {
-    path_pattern     = "/about"
-    target_origin_id = var.about_origin_id
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD", "OPTIONS"]
-
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 86400
-    max_ttl                = 31536000
-    compress               = true
-    viewer_protocol_policy = "redirect-to-https"
-  }
-
-  ## Thanks.
-  ordered_cache_behavior {
-    path_pattern     = "/thanks"
-    target_origin_id = var.thanks_origin_id
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD", "OPTIONS"]
-
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 86400
-    max_ttl                = 31536000
-    compress               = true
-    viewer_protocol_policy = "redirect-to-https"
-  }
-
-  ## Home.
-  ordered_cache_behavior {
-    path_pattern     = "/"
-    target_origin_id = var.home_origin_id
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD", "OPTIONS"]
-
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 86400
-    max_ttl                = 31536000
-    compress               = true
-    viewer_protocol_policy = "redirect-to-https"
   }
 
   # CNAME + SSL
@@ -177,8 +79,7 @@ resource "aws_cloudfront_distribution" "queuauu_distribution" {
   # Other required blocks 
   restrictions {
     geo_restriction {
-      restriction_type = "whitelist"
-      locations        = var.allow_countries
+      restriction_type = "none"
     }
   }
 
