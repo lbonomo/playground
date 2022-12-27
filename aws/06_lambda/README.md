@@ -1,4 +1,4 @@
-# Lambda function example
+# Lambda function example + Terraform
 
 ## Target
 Deploy a AWS Lambda function automatically.
