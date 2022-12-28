@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Random
+
+Resources:
+  randomFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/index.handler
+      Runtime: nodejs18.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Get random word.
+      Environment:
+        Variables:
+          WORDS: "hola,mundo"
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
