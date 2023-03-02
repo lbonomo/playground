@@ -1,0 +1,3 @@
+[submodule "aws/07_elastic-beanstalk/my-nuxt-project"]
+	path = aws/07_elastic-beanstalk/my-nuxt-project
+	url = git@github.com:lbonomo/my-nuxt-project.git
