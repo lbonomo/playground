@@ -9,6 +9,10 @@ terraform {
   }
 }
 
+locals {
+  emails = ["lucas@vanguard.com.ar"]
+}
+
 # Vars 
 variable "zipname" {
   type        = string
@@ -16,17 +20,15 @@ variable "zipname" {
   default     = "random.zip"
 }
 
-
 # Provider
 provider "aws" {
   region  = "us-east-1"
   profile = "terraform"
 }
 
-
+# Role
 resource "aws_iam_role" "iam_for_lambda" {
   name = "iam_for_lambda"
-
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -67,6 +69,35 @@ resource "aws_lambda_function_url" "random_lambda_latest" {
   authorization_type = "NONE"
 }
 
+## SNS
+resource "aws_sns_topic" "lambda_random_topic" {
+  name = "lambda-random-topic"
+}
+
+resource "aws_sns_topic_subscription" "sns-topic" {
+  count     = length(local.emails)
+  topic_arn = aws_sns_topic.lambda_random_topic.arn
+  protocol  = "email"
+  endpoint  = local.emails[count.index]
+}
+
+## Cloudwatch
+resource "aws_cloudwatch_metric_alarm" "lambda_random_app" {
+  alarm_name                = "lambda_random_app"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = 1
+  metric_name               = "Invocations"
+  namespace                 = "AWS/Lambda"
+  period                    = 120
+  statistic                 = "Sum"
+  threshold                 = 5
+  alarm_description         = "Randon APP invocations"
+  actions_enabled           = "true"
+  alarm_actions             = [aws_sns_topic.lambda_random_topic.arn]
+  insufficient_data_actions = []
+}
+
+## Outputs
 output "lambda_random_url" {
   description = "Public URL:"
   value       = aws_lambda_function_url.random_lambda_latest.function_url
