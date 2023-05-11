@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+
+  worker:
+    build: .
+    environment:
+      QUEUE_URL: ${QUEUE_URL}
+      AWS_KEY: ${AWS_KEY}
+      AWS_SECRET: ${AWS_SECRET}

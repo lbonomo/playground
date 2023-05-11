@@ -1,0 +1,21 @@
+{
+  "name": "queue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev-boss": "ts-node-dev --respawn --transpile-only ./src/boss.ts",
+    "dev-worker": "ts-node-dev --respawn --transpile-only ./src/worker.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "ts-node-dev": "^2.0.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1253.0",
+    "dotenv": "^16.0.3"
+  }
+}
