@@ -19,5 +19,5 @@ Resources:
         Api:
           Type: Api
           Properties:
-            Path: /
-            Method: GET
+            Path: /{path}
+            Method: ANY
