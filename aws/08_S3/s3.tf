@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "plugins" {
         Environment = "Dev"
     }
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
