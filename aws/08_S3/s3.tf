@@ -1,21 +1,26 @@
 # S3 Bucket
 resource "aws_s3_bucket" "plugins" {
-    bucket = "wordpress-plugins-storage"
-    tags = {
-        Creator = "Terraform"
-        Environment = "Dev"
-    }
+  bucket = "wordpress-plugins-storage"
+  tags = {
+    Creator     = "Terraform"
+    Environment = "Dev"
+  }
+  
+  force_destroy = true
+  
   lifecycle {
     prevent_destroy = false
   }
 }
 
 resource "aws_s3_bucket_public_access_block" "plugins" {
-  bucket = aws_s3_bucket.plugins.id
+  bucket                  = aws_s3_bucket.plugins.id
   block_public_acls       = false
   block_public_policy     = false
   ignore_public_acls      = false
   restrict_public_buckets = false
+
+
 }
 
 
@@ -29,9 +34,9 @@ data "aws_iam_policy_document" "allow_public_access" {
   statement {
 
     principals {
-	    type = "*"
-	    identifiers = ["*"]
-	  }
+      type        = "*"
+      identifiers = ["*"]
+    }
 
     actions = [
       "s3:GetObject",
