@@ -1,0 +1,5 @@
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+google-cloud-cli-454.0.0-linux-x86_64.tar.gz
