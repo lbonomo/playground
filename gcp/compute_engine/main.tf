@@ -11,6 +11,23 @@ terraform {
   }
 }
 
+# Neccesaries values
+variable "github_repo_url" {
+    type = string
+}
+
+variable "github_token_runner" {
+    type = string
+} 
+
+data "template_file" "startup_script" {
+  template = "${file("./install.sh")}"
+  vars = {
+    github_repo_url = var.github_repo_url
+    github_token_runner = var.github_token_runner
+  }
+}
+
 # Va
 provider "google" {
   credentials = file("~/.config/gcloud/application_default_credentials.json")
@@ -48,7 +65,7 @@ resource "google_compute_instance" "default" {
     }
   }
    
-  metadata_startup_script = "${file("./install.sh")}"
+  metadata_startup_script = "${data.template_file.startup_script.rendered}"
 
   network_interface {
     subnetwork = google_compute_subnetwork.default.id
@@ -72,15 +89,4 @@ resource "google_compute_firewall" "ssh" {
   priority      = 1000
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["ssh"]
-}
-
-resource "google_compute_firewall" "runner" {
-  name    = "runner-app-firewall"
-  network = google_compute_network.vpc_network.id
-
-  allow {
-    protocol = "tcp"
-    ports    = ["5000"]
-  }
-  source_ranges = ["0.0.0.0/0"]
 }
