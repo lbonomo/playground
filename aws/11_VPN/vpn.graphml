@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yEd 3.23.2-->
+  <key attr.name="Description" attr.type="string" for="graph" id="d0"/>
+  <key for="port" id="d1" yfiles.type="portgraphics"/>
+  <key for="port" id="d2" yfiles.type="portgeometry"/>
+  <key for="port" id="d3" yfiles.type="portuserdata"/>
+  <key attr.name="url" attr.type="string" for="node" id="d4"/>
+  <key attr.name="description" attr.type="string" for="node" id="d5"/>
+  <key for="node" id="d6" yfiles.type="nodegraphics"/>
+  <key for="graphml" id="d7" yfiles.type="resources"/>
+  <key attr.name="url" attr.type="string" for="edge" id="d8"/>
+  <key attr.name="description" attr.type="string" for="edge" id="d9"/>
+  <key for="edge" id="d10" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <data key="d0"/>
+    <node id="n0">
+      <data key="d5" xml:space="preserve"><![CDATA[Res Amazon VPC Internet Gateway 48]]></data>
+      <data key="d6">
+        <y:SVGNode>
+          <y:Geometry height="60.0" width="60.0" x="502.0" y="150.0"/>
+          <y:Fill color="#CCCCFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="28.0" y="64.0"/>
+          <y:SVGNodeProperties usingVisualBounds="false"/>
+          <y:SVGModel svgBoundsPolicy="0">
+            <y:SVGContent refid="1"/>
+          </y:SVGModel>
+        </y:SVGNode>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d5" xml:space="preserve"><![CDATA[Res Amazon VPC Endpoints 48]]></data>
+      <data key="d6">
+        <y:SVGNode>
+          <y:Geometry height="60.0" width="60.0" x="502.0" y="279.0"/>
+          <y:Fill color="#CCCCFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="28.0" y="64.0"/>
+          <y:SVGNodeProperties usingVisualBounds="false"/>
+          <y:SVGModel svgBoundsPolicy="0">
+            <y:SVGContent refid="2"/>
+          </y:SVGModel>
+        </y:SVGNode>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d5" xml:space="preserve"><![CDATA[Arch AWS Client VPN 32]]></data>
+      <data key="d6">
+        <y:SVGNode>
+          <y:Geometry height="60.0" width="60.0" x="114.0" y="208.0"/>
+          <y:Fill color="#CCCCFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="28.0" y="64.0"/>
+          <y:SVGNodeProperties usingVisualBounds="false"/>
+          <y:SVGModel svgBoundsPolicy="0">
+            <y:SVGContent refid="3"/>
+          </y:SVGModel>
+        </y:SVGNode>
+      </data>
+    </node>
+    <node id="n3" yfiles.foldertype="group">
+      <data key="d6">
+        <y:TableNode configuration="com.yworks.bpmn.Pool">
+          <y:Geometry height="416.1598620975275" width="395.7996131913942" x="641.4810362678666" y="60.96383459163212"/>
+          <y:Fill color="#8C4FFF" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#8C4FFF" type="dashed" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="24.430143356323242" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#FFFFFF" verticalTextPosition="bottom" visible="true" width="263.33685302734375" x="4.0" xml:space="preserve" y="76.41150453509181">vpc-0c609b27a6037a185 - N. Virginia</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" rotationAngle="270.0" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="33.0" y="214.57993104876368">
+            <y:LabelModel>
+              <y:RowNodeLabelModel offset="3.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:RowNodeLabelModelParameter horizontalPosition="0.0" id="row_0" inside="true"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_STYLE">
+              <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
+            </y:Property>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_SELECTION_STYLE">
+              <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
+            </y:Property>
+            <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_SELECTION_STYLE">
+              <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
+            </y:Property>
+            <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
+            <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_MAIN" value="#ffffff"/>
+            <y:Property class="java.lang.String" name="POOL_LANE_STYLE" value="LANE_STYLE_COLUMNS"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="POOL_TYPE_EMPTY"/>
+            <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_STYLE">
+              <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
+            </y:Property>
+          </y:StyleProperties>
+          <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
+          <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+          <y:BorderInsets bottom="17" bottomF="17.363865090045238" left="9" leftF="8.677031402588028" right="24" rightF="24.36318302897473" top="6" topF="5.535956927090751"/>
+          <y:Table autoResizeTable="true" defaultColumnWidth="380.0" defaultMinimumColumnWidth="30.0" defaultMinimumRowHeight="30.0" defaultRowHeight="320.0">
+            <y:DefaultColumnInsets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
+            <y:DefaultRowInsets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
+            <y:Insets bottom="0.0" left="30.0" right="0.0" top="0.0"/>
+            <y:Columns>
+              <y:Column id="column_0" minimumWidth="30.0" width="342.7996131913942">
+                <y:Insets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
+              </y:Column>
+            </y:Columns>
+            <y:Rows>
+              <y:Row height="393.1598620975275" id="row_0" minimumHeight="30.0">
+                <y:Insets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
+              </y:Row>
+            </y:Rows>
+          </y:Table>
+        </y:TableNode>
+      </data>
+      <graph edgedefault="directed" id="n3:"/>
+    </node>
+    <edge id="e0" source="n1" target="n1">
+      <data key="d10">
+        <y:ArcEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="532.0" y="309.0"/>
+          </y:Path>
+          <y:LineStyle color="#808080" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:Arc height="-0.0" ratio="-1.1402781296965259E-7" type="fixedRatio"/>
+        </y:ArcEdge>
+      </data>
+    </edge>
+  </graph>
+  <data key="d7">
+    <y:Resources>
+      <y:Resource id="1" xml:space="preserve">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN'
+          'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'&gt;
+&lt;svg contentScriptType="text/ecmascript" width="48px" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" contentStyleType="text/css" viewBox="0 0 48 48" height="48px" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" version="1.1"
+&gt;
+    &lt;title
+  &gt;Icon-Resource/Networking-and-Content-Delivery/Res_Amazon-VPC_Internet-Gateway_48&lt;/title
+  &gt;
+    &lt;g id="Icon-Resource/Networking-and-Content-Delivery/Res_Amazon-VPC_Internet-Gateway_48" style="fill:none; stroke-width:1; fill-rule:evenodd; stroke:none;"
+  &gt;
+        &lt;path d="M33.4312,35.1778 L31.9332,35.1778 L31.9332,17.5018 C31.9332,17.1088 31.7022,16.7518 31.3442,16.5908 L31.2522,16.5488 C29.2432,15.6418 27.1642,14.7028 24.1762,14.7028 C21.0532,14.7028 18.7612,15.7118 16.4952,16.8368 C16.1552,17.0058 15.9402,17.3528 15.9402,17.7328 L15.9402,35.1778 L14.4772,35.1778 L14.4772,16.3118 C16.9112,14.3328 20.4202,13.2048 24.1862,13.2048 C27.6872,13.2048 31.0252,14.2018 33.4312,15.9528 L33.4312,35.1778 Z M24.1862,11.2048 C19.7612,11.2048 15.6172,12.6238 12.8152,15.0998 C12.6002,15.2888 12.4772,15.5618 12.4772,15.8488 L12.4772,36.1778 C12.4772,36.7308 12.9242,37.1778 13.4772,37.1778 L16.9402,37.1778 C17.4932,37.1778 17.9402,36.7308 17.9402,36.1778 L17.9402,18.3558 C19.8592,17.4288 21.7192,16.7028 24.1762,16.7028 C26.5112,16.7028 28.2092,17.3778 29.9332,18.1488 L29.9332,36.1778 C29.9332,36.7308 30.3802,37.1778 30.9332,37.1778 L34.4312,37.1778 C34.9842,37.1778 35.4312,36.7308 35.4312,36.1778 L35.4312,15.4578 C35.4312,15.1538 35.2922,14.8658 35.0532,14.6748 C32.2792,12.4698 28.3182,11.2048 24.1862,11.2048 L24.1862,11.2048 Z M23.9542,43.9088 C12.9522,43.9088 3.9992,34.9568 3.9992,23.9538 C3.9992,12.9508 12.9522,3.9998 23.9542,3.9998 C34.9572,3.9998 43.9092,12.9508 43.9092,23.9538 C43.9092,34.9568 34.9572,43.9088 23.9542,43.9088 L23.9542,43.9088 Z M23.9542,1.9998 C11.8482,1.9998 1.9992,11.8488 1.9992,23.9538 C1.9992,36.0608 11.8482,45.9088 23.9542,45.9088 C36.0602,45.9088 45.9092,36.0608 45.9092,23.9538 C45.9092,11.8488 36.0602,1.9998 23.9542,1.9998 L23.9542,1.9998 Z" id="AWS-Amazon-VPC_Internet-gateway_Resource-Icon_light-bg" style="fill:#8C4FFF;"
+    /&gt;
+    &lt;/g
+    &gt;
+&lt;/svg
+  &gt;
+</y:Resource>
+      <y:Resource id="2" xml:space="preserve">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN'
+          'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'&gt;
+&lt;svg contentScriptType="text/ecmascript" width="48px" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" contentStyleType="text/css" viewBox="0 0 48 48" height="48px" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" version="1.1"
+&gt;
+    &lt;title
+  &gt;Icon-Resource/Networking-and-Content-Delivery/Res_Amazon-VPC_Endpoints_48&lt;/title
+  &gt;
+    &lt;g id="Icon-Resource/Networking-and-Content-Delivery/Res_Amazon-VPC_Endpoints_48" style="fill:none; stroke-width:1; fill-rule:evenodd; stroke:none;"
+  &gt;
+        &lt;path d="M20.6197,27.6015 L22.0337,29.0155 L26.3967,24.6515 C26.7877,24.2605 26.7877,23.6275 26.3967,23.2375 L22.0337,18.8735 L20.6197,20.2885 L23.2757,22.9445 L6.4907,22.9445 L6.4907,24.9445 L23.2767,24.9445 L20.6197,27.6015 Z M43.8897,23.9445 C43.8897,12.9475 34.9417,3.9995 23.9447,3.9995 C12.9467,3.9995 3.9997,12.9475 3.9997,23.9445 C3.9997,34.9425 12.9467,43.8895 23.9447,43.8895 C34.9417,43.8895 43.8897,34.9425 43.8897,23.9445 L43.8897,23.9445 Z M45.8897,23.9445 C45.8897,36.0445 36.0457,45.8895 23.9447,45.8895 C11.8447,45.8895 1.9997,36.0445 1.9997,23.9445 C1.9997,11.8435 11.8447,1.9995 23.9447,1.9995 C36.0457,1.9995 45.8897,11.8435 45.8897,23.9445 L45.8897,23.9445 Z M15.9627,26.5625 L15.9627,27.0165 C15.9627,27.0765 15.9677,27.1355 15.9777,27.1945 C16.0417,27.5435 17.5967,35.7575 23.9447,35.7575 C30.2927,35.7575 31.8477,27.5435 31.9107,27.1945 C31.9217,27.1355 31.9267,27.0765 31.9267,27.0165 L31.9267,16.4655 C31.9267,16.0575 31.6787,15.6905 31.2997,15.5385 L24.3177,12.7275 C24.0797,12.6315 23.8097,12.6315 23.5717,12.7275 L16.5897,15.5385 C16.2107,15.6905 15.9627,16.0575 15.9627,16.4655 L15.9627,21.3265 L17.9627,21.3265 L17.9627,17.1415 L23.9447,14.7335 L29.9267,17.1415 L29.9267,26.9175 C29.7647,27.6895 28.3467,33.7575 23.9447,33.7575 C19.5427,33.7575 18.1247,27.6895 17.9627,26.9175 L17.9627,26.5625 L15.9627,26.5625 Z M35.4167,13.3245 L35.4167,26.6755 C35.4167,31.2075 33.0187,39.7805 23.9447,39.7805 C19.2227,39.7805 15.7337,37.3375 13.8537,32.7165 C12.8547,30.2675 12.5767,27.8485 12.5007,26.6245 L14.4967,26.4995 C14.5527,27.3865 14.7807,29.6945 15.7067,31.9615 C17.2767,35.8235 20.0487,37.7805 23.9447,37.7805 C33.2797,37.7805 33.4157,27.1275 33.4167,26.6745 L33.4167,13.9995 L23.9447,10.1865 L14.4727,13.9995 L14.4727,21.3265 L12.4727,21.3265 L12.4727,13.3245 C12.4727,12.9155 12.7207,12.5485 13.0987,12.3965 L23.5717,8.1805 C23.8097,8.0845 24.0797,8.0845 24.3177,8.1805 L34.7897,12.3965 C35.1687,12.5485 35.4167,12.9155 35.4167,13.3245 L35.4167,13.3245 Z" id="AWS-Amazon-VPC_Endpoints_Resource-Icon_light-bg" style="fill:#8C4FFF;"
+    /&gt;
+    &lt;/g
+    &gt;
+&lt;/svg
+  &gt;
+</y:Resource>
+      <y:Resource id="3" xml:space="preserve">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN'
+          'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'&gt;
+&lt;svg contentScriptType="text/ecmascript" width="40px" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" contentStyleType="text/css" viewBox="0 0 40 40" height="40px" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" version="1.1"
+&gt;
+    &lt;title
+  &gt;Icon-Architecture/32/Arch_AWS-Client-VPN_32&lt;/title
+  &gt;
+    &lt;g id="Icon-Architecture/32/Arch_AWS-Client-VPN_32" style="fill:none; stroke-width:1; fill-rule:evenodd; stroke:none;"
+  &gt;
+        &lt;g style="fill:#8C4FFF;" id="Icon-Architecture-BG/32/Networking-Content-Delivery"
+    &gt;
+            &lt;rect width="40" x="0" height="40" id="Rectangle" y="0"
+      /&gt;
+        &lt;/g
+      &gt;
+        &lt;path d="M19.0535485,26.5930817 C19.0535485,26.8690817 19.2785485,27.0930817 19.5535485,27.0930817 C19.8285485,27.0930817 20.0535485,26.8690817 20.0535485,26.5930817 C20.0535485,26.3170817 19.8285485,26.0930817 19.5535485,26.0930817 C19.2785485,26.0930817 19.0535485,26.3170817 19.0535485,26.5930817 L19.0535485,26.5930817 Z M18.0535485,26.5930817 C18.0535485,25.7660817 18.7265485,25.0930817 19.5535485,25.0930817 C20.3805485,25.0930817 21.0535485,25.7660817 21.0535485,26.5930817 C21.0535485,27.2440817 20.6345485,27.7940817 20.0535485,28.0010817 L20.0535485,29.0930817 L19.0535485,29.0930817 L19.0535485,28.0010817 C18.4725485,27.7940817 18.0535485,27.2440817 18.0535485,26.5930817 L18.0535485,26.5930817 Z M24.0535485,24.0930817 L15.0535485,24.0930817 L15.0535485,30.0930817 L24.0535485,30.0930817 L24.0535485,29.0930817 L22.0535485,29.0930817 L22.0535485,28.0930817 L24.0535485,28.0930817 L24.0535485,26.0930817 L22.0535485,26.0930817 L22.0535485,25.0930817 L24.0535485,25.0930817 L24.0535485,24.0930817 Z M16.0535485,23.0930817 L23.0535485,23.0930817 L23.0535485,20.6370817 C23.0535485,20.0200817 22.7285485,19.3940817 22.1605485,18.9190817 C21.5085485,18.3730817 20.5905485,18.0720817 19.5745485,18.0720817 C17.3715485,18.0720817 16.0545485,19.3770817 16.0535485,20.6380817 L16.0535485,23.0930817 Z M25.0535485,23.5930817 L25.0535485,25.0930817 L25.0535485,26.0930817 L25.0535485,28.0930817 L25.0535485,29.0930817 L25.0535485,30.5930817 C25.0535485,30.8690817 24.8295485,31.0930817 24.5535485,31.0930817 L14.5535485,31.0930817 C14.2775485,31.0930817 14.0535485,30.8690817 14.0535485,30.5930817 L14.0535485,23.5930817 C14.0535485,23.3170817 14.2775485,23.0930817 14.5535485,23.0930817 L15.0535485,23.0930817 L15.0535485,20.6370817 C15.0545485,18.8850817 16.7455485,17.0720817 19.5745485,17.0720817 C20.8245485,17.0720817 21.9715485,17.4560817 22.8035485,18.1520817 C23.5985485,18.8180817 24.0545485,19.7240817 24.0535485,20.6380817 L24.0535485,23.0930817 L24.5535485,23.0930817 C24.8295485,23.0930817 25.0535485,23.3170817 25.0535485,23.5930817 L25.0535485,23.5930817 Z M34.1065485,21.1470817 C34.1065485,22.6350817 33.6585485,23.8330817 32.7755485,24.7090817 C31.3375485,26.1350817 29.2645485,26.1670817 29.0865485,26.1670817 L29.0775485,26.1670817 L27.0805485,26.1640817 L27.0825485,25.1640817 L29.0825485,25.1670817 C29.1165485,25.1670817 30.9105485,25.1550817 32.0765485,23.9930817 C32.7595485,23.3130817 33.1065485,22.3550817 33.1065485,21.1470817 C33.1065485,17.5100817 29.6905485,16.7380817 29.0045485,16.6200817 C28.8715485,16.5970817 28.7535485,16.5220817 28.6765485,16.4100817 C28.6005485,16.2980817 28.5735485,16.1600817 28.5995485,16.0280817 C28.8805485,14.6450817 28.0695485,13.7460817 27.2145485,13.3660817 C26.3675485,12.9900817 25.1485485,13.0000817 24.4725485,13.9150817 C24.3625485,14.0640817 24.1855485,14.1360817 23.9955485,14.1130817 C23.8135485,14.0850817 23.6595485,13.9590817 23.5985485,13.7840817 C23.2575485,12.8170817 22.6395485,11.8930817 21.7085485,10.9600817 C20.2325485,9.47808173 17.3855485,8.22208173 14.2285485,9.56208173 C11.9055485,10.5450817 10.5175485,13.3680817 10.5175485,15.5300817 L10.5105485,15.8670817 C10.5035485,16.1130817 10.4925485,16.3970817 10.5135485,16.5730817 C10.5435485,16.8220817 10.3835485,17.0540817 10.1405485,17.1160817 C8.00054845,17.6610817 7.00354845,18.9420817 7.00354845,21.1470817 L7.00154845,21.3040817 C7.00054845,21.4140817 6.99754845,21.5390817 7.00254845,21.6190817 C7.15654845,24.0540817 9.45254845,25.1640817 11.5235485,25.1640817 L12.0315485,25.1660817 L12.0275485,26.1660817 L11.5215485,26.1640817 C9.00054845,26.1640817 6.19854845,24.7600817 6.00454845,21.6800817 C5.99854845,21.5800817 5.99954845,21.4260817 6.00154845,21.2900817 L6.00354845,21.1470817 C6.00354845,18.6260817 7.18054845,16.9830817 9.50354845,16.2560817 C9.50354845,16.1180817 9.50754845,15.9740817 9.51054845,15.8390817 L9.51754845,15.5300817 C9.51754845,13.0430817 11.1335485,9.78608173 13.8375485,8.64108173 C16.8155485,7.37908173 20.1825485,8.01308173 22.4175485,10.2540817 C23.2305485,11.0700817 23.8325485,11.8880817 24.2435485,12.7390817 C25.1495485,12.0570817 26.4375485,11.9260817 27.6205485,12.4520817 C28.9845485,13.0590817 29.7425485,14.3140817 29.6465485,15.7340817 C31.8015485,16.2640817 34.1065485,17.9400817 34.1065485,21.1470817 L34.1065485,21.1470817 Z" id="AWS-Client-VPN_Icon_32_Squid" style="fill:#FFFFFF;"
+      /&gt;
+    &lt;/g
+      &gt;
+&lt;/svg
+    &gt;
+</y:Resource>
+    </y:Resources>
+  </data>
+</graphml>

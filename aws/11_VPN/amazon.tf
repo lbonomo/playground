@@ -1,18 +1,13 @@
 # Subnet
 
 # EC2
-resource "aws_instance" "app_server" {
-  ami           = "ami-0005e0cfe09cc9050"
-  instance_type = "t2.nano"
-
-  #   vpc_security_group_ids = ""
-  #   subnet_id              = "subnet-923a..."
-
-  tags = {
-    Name = "Terraform example"
-  }
-
-}
+# resource "aws_instance" "app_server" {
+#   ami           = "ami-0005e0cfe09cc9050"
+#   instance_type = "t2.nano"
+#   tags = {
+#     Name = "Terraform example"
+#   }
+# }
 
 # Cert
 ### Certificate.
@@ -66,11 +61,21 @@ resource "aws_cloudwatch_log_stream" "log_stream_vpn" {
   name           = "SampleLogStream1234"
   log_group_name = aws_cloudwatch_log_group.log_group_vpn.name
 }
+
+
+
+
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ec2_client_vpn_endpoint
 resource "aws_ec2_client_vpn_endpoint" "vpn_example" {
   description            = "terraform-clientvpn-example"
   server_certificate_arn = aws_acm_certificate.cert_01.arn
-  client_cidr_block      = "10.135.172.0/22"
+  client_cidr_block      = var.loca_ip
+
+  #   vpc_security_group_ids = ""
+  #   subnet_id              = "subnet-923a..."
+  vpc_id                 = aws_vpc.example_vpn.id
+  security_group_ids     = [aws_security_group.vpn_secgroup.id]
+  split_tunnel           = true
 
   authentication_options {
     type                       = "certificate-authentication"
