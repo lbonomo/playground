@@ -1,4 +1,4 @@
 output "cloudfront_url" {
-  description = "Public URL:"
-  value       = "http://${aws_instance.web.public_ip}"
+  description = "Public IP:"
+  value       = "http://${aws_instance.web_example.public_ip}"
 }
