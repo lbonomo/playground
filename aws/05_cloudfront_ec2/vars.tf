@@ -11,7 +11,6 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-
 # CNAME
 variable "cname" {
   type        = string
@@ -20,16 +19,23 @@ variable "cname" {
 }
 
 # Origins
-# ## Domain.
-# variable "domain_name" {
-#   type        = string
-#   description = "Origin WordPress domain"
-#   default     = "lucasbonomo.com"
-# }
 
 ## Home
 variable "origin_id" {
   type        = string
   description = "Home Origin ID"
   default     = "DHome"
+}
+
+## VPC
+variable "public_subnet_cidr" {
+  type        = string
+  description = "Public subnet"
+  default     = "178.0.10.0/24"  
+}
+
+variable "vpc_cidr" {
+  type        = string
+  description = "Public subnet"
+  default     = "178.0.0.0/16"  
 }
