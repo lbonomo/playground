@@ -1,12 +1,21 @@
 # Resource
 
+# Get data Cache policy
+data "aws_cloudfront_cache_policy" "caching_optimized" {
+  name = "Managed-CachingOptimized"
+}
+
+# Get data origin request policy
+data "aws_cloudfront_origin_request_policy" "all_viewer" {
+  name = "Managed-AllViewer"
+}
+
 # CloudFront - Distribution
 resource "aws_cloudfront_distribution" "queuauu" {
-
   enabled         = true
   is_ipv6_enabled = true
   comment         = "www.queuauu.com -> [ec2_url]"
-
+  aliases = [var.cname]
   tags = {
     Creator = "Terraform"
   }
@@ -25,22 +34,13 @@ resource "aws_cloudfront_distribution" "queuauu" {
     }
   }
 
-
   ## Behavior.
-
   default_cache_behavior {
-    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = var.origin_id
-
-    forwarded_values {
-      query_string = false
-
-      cookies {
-        forward = "none"
-      }
-    }
-
+    allowed_methods          = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods           = ["GET", "HEAD"]
+    target_origin_id         = var.origin_id
+    cache_policy_id          = data.aws_cloudfront_cache_policy.caching_optimized.id
+    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.all_viewer.id
     viewer_protocol_policy = "allow-all"
     min_ttl                = 0
     default_ttl            = 3600
@@ -51,13 +51,10 @@ resource "aws_cloudfront_distribution" "queuauu" {
   viewer_certificate {
     # Specify this, acm_certificate_arn.
     cloudfront_default_certificate = false
-    acm_certificate_arn = aws_acm_certificate.queuauu_cert.arn
+    acm_certificate_arn            = aws_acm_certificate.queuauu_cert.arn
     # Required if you specify acm_certificate_arn.
-    ssl_support_method  = "sni-only"
+    ssl_support_method = "sni-only"
   }
-
-  aliases = [var.cname]
-
 
   # Other required blocks 
   restrictions {
