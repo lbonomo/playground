@@ -1,0 +1,12 @@
+name: virtual_host
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - 80:80
+    # restart: always
+    volumes:
+      - ./conf.d/:/etc/nginx/conf.d/
+      - ./www/:/var/www/
