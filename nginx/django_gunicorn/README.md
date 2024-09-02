@@ -12,3 +12,9 @@ apt-get -y upgrade
 apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install nginx -y
 /etc/init.d/nginx start
 ```
+
+
+## Python
+Curren LTS version is 3.12
+
+https://devguide.python.org/versions/

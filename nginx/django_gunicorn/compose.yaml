@@ -1,4 +1,4 @@
-name: virtual_host
+name: django
 
 services:
   nginx:
@@ -9,7 +9,8 @@ services:
     # restart: always
     volumes:
       - ./conf.d/:/etc/nginx/conf.d/
-  python:
+  django:
     build: .
+    container_name: django
     volumes:
       - ./code/:/code/
