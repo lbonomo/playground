@@ -10,6 +10,9 @@ openssl req -x509 -out localhost.crt -keyout localhost.key \
    printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
 
+```
+docker compose up
+```
 
 ```
 docker run -it -p 80:80 -p 443:443 -v ./conf.d/:/etc/nginx/conf.d/ -v ./www/:/var/www/ nginx:stable-alpine
