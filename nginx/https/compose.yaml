@@ -1,0 +1,13 @@
+name: https
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx-https
+    ports:
+      - 80:80
+      - 443:443
+    # restart: always
+    volumes:
+      - ./conf.d/:/etc/nginx/conf.d/
+      - ./www/:/var/www/
