@@ -1,0 +1,18 @@
+name: django-uwsgi
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx-uwsgi
+    ports:
+      - 80:80
+    # restart: always
+    volumes:
+      - ./conf.d/:/etc/nginx/conf.d/
+  django:
+    build: .
+    container_name: django-uwsgi
+    ports:
+      - 8000:8000
+    volumes:
+      - ./code/:/code/
