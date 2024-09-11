@@ -1,0 +1,11 @@
+name: ubuntu-
+
+services:
+  server:
+    build: .
+    container_name: ubuntu
+    ports:
+      - 80:80
+    volumes:
+      - ./conf.d/:/etc/nginx/conf.d/
+      - ./code/:/code/
