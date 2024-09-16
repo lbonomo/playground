@@ -1,0 +1,10 @@
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webapp
+    volumes:
+      - ./code:/code
+    ports:
+      - "8000:8000"
