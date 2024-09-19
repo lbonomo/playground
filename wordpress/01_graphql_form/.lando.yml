@@ -1,0 +1,11 @@
+name: graphql_form
+recipe: wordpress
+config:
+  webroot: wordpress
+  php: '8.2'
+services:
+  appserver:
+    overrides:
+      volumes:
+        - ./.wp-cli/:/var/www/.wp-cli/
+        - ./tools/:/app/tools/
