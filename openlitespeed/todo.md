@@ -1,0 +1,4 @@
+- Django
+- WordPress
+- https
+- virtual host
