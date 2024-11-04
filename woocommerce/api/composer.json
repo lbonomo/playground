@@ -1,0 +1,20 @@
+{
+    "name": "lbonomo/api",
+    "autoload": {
+        "psr-4": {
+            "lbonomo\\API\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lucas Bonomo",
+            "email": "bonomo.lucas@gmail.com"
+        }
+    ],
+    "require": {
+        "automattic/woocommerce": "^3.1"
+    },
+    "scripts": {
+        "serve": "php -S 0.0.0.0:8000"
+    }
+}
