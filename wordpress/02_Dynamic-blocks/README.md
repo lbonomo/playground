@@ -11,6 +11,7 @@ npm run server start
 npm run server stop
 
 
+https://chroniclingamerica.loc.gov/search/titles/results/?format=json&terms=sal
 
 ```json
 	"mappings": {
