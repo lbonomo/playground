@@ -1,9 +1,9 @@
 #! /bin/bash
-
-posts=$(wp-env run cli wp post list --post_type=page,post --format=ids)
-size=($posts)
+posts=($(wp-env run cli wp post list --post_type=page,post --format=ids))
+# posts=$(wp-env run cli wp post list --post_type=page,post --format=ids)
+size=${#posts[@]}
 # if there is just one post, import pages and posts.
-if [[ ${#size[@]} -lt 5 ]]; then
+if [[ $size -lt 5 ]]; then
 	# Remove previus pages and post.
 	for id in $posts; do
 		wp-env run cli wp post delete $id --force
