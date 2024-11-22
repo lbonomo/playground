@@ -12,6 +12,7 @@
 
 // Generates a unique id for aria-controls.
 $unique_id = wp_unique_id( 'p-' );
+$result_id = wp_unique_id( 'result-' );
 
 // Adds the global state.
 wp_interactivity_state(
@@ -53,4 +54,26 @@ wp_interactivity_state(
 			esc_html_e( 'Example Interactive TypeScript - hello from an interactive block!', 'dynamic-blocks' );
 		?>
 	</p>
+
+
+	<div
+		<?php echo get_block_wrapper_attributes(); ?>
+		data-wp-interactive="uou-simple-block-search"
+		data-wp-context="{}"
+	>
+
+		<form role="search" method="get" action="">
+			<input
+				data-wp-on--keyup="actions.search" 
+				type="search" 
+				placeholder="Buscar productos…" 
+				value=""
+				autocomplete="off"
+				name="s"
+			/>
+			<input type="hidden" name="post_type" value="product" />
+			<button type="submit" value="Buscar" class="">Buscar</button>
+		</form>
+		<div aria-controls="<?php echo esc_attr( $result_id ); ?>" class="search-results"></div>
+	</div>
 </div>

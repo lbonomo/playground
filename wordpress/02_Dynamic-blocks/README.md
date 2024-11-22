@@ -1,4 +1,11 @@
+# 
 
+
+## Instalation
+`npm intall`
+
+
+## Development Server.
 `npm run server start`
 
 http://localhost:8888
@@ -9,18 +16,8 @@ http://localhost:8888/wp-admin/
 `npm run server stop`
 
 
-https://chroniclingamerica.loc.gov/search/titles/results/?format=json&terms=sal
+## Development workflow.
 
-```json
-	"mappings": {
-		"wp-content/plugins/dynamic-blocks": "."
-	}
-```
+`npm start`
 
-
-## 
-
-
-
-wp-env run cli wp plugin install wordpress-importer --activate
-wp-env run cli wp import --authors=skip wp-content/plugins/02_Dynamic-blocks/initial-data/data.xml
+http://localhost:8888/?rest_route=/wp/v2/posts&search_columns=post_title&search=[term]
