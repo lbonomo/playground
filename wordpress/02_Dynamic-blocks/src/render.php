@@ -24,56 +24,33 @@ wp_interactivity_state(
 		'themeText'	=> esc_html__( 'Switch to Dark', 'dynamic-blocks' ),
 	)
 );
+
+$context = array('searchTerm' => false);
+
 ?>
 
 <div
 	<?php echo get_block_wrapper_attributes(); ?>
 	data-wp-interactive="dynamic-blocks"
-	<?php echo wp_interactivity_data_wp_context( array( 'isOpen' => false ) ); ?>
-	data-wp-watch="callbacks.logIsOpen"
-	data-wp-class--dark-theme="state.isDark"
+	data-wp-watch="callbacks.isThereData"
 >
-	<button
-		data-wp-on--click="actions.toggleTheme"
-		data-wp-text="state.themeText"
-	></button>
-
-	<button
-		data-wp-on--click="actions.toggleOpen"
-		data-wp-bind--aria-expanded="context.isOpen"
-		aria-controls="<?php echo esc_attr( $unique_id ); ?>"
-	>
-		<?php esc_html_e( 'Toggle', 'dynamic-blocks' ); ?>
-	</button>
-
-	<p
-		id="<?php echo esc_attr( $unique_id ); ?>"
-		data-wp-bind--hidden="!context.isOpen"
-	>
-		<?php
-			esc_html_e( 'Example Interactive TypeScript - hello from an interactive block!', 'dynamic-blocks' );
-		?>
-	</p>
-
-
-	<div
-		<?php echo get_block_wrapper_attributes(); ?>
-		data-wp-interactive="uou-simple-block-search"
-		data-wp-context="{}"
-	>
-
-		<form role="search" method="get" action="">
-			<input
-				data-wp-on--keyup="actions.search" 
-				type="search" 
-				placeholder="Buscar productos…" 
-				value=""
-				autocomplete="off"
-				name="s"
-			/>
-			<input type="hidden" name="post_type" value="product" />
-			<button type="submit" value="Buscar" class="">Buscar</button>
-		</form>
-		<div aria-controls="<?php echo esc_attr( $result_id ); ?>" class="search-results"></div>
+	<form role="search" method="get" action="">
+		<input
+			data-wp-watch="callbacks.isThereData"
+			data-wp-on--keyup="actions.search"
+			data-wp-bind--aria-expanded="context.searchTerm"
+			
+			type="search" 
+			placeholder="Buscar productos…" 
+			value=""
+			autocomplete="off"
+			name="s"
+			aria-controls="<?php echo esc_attr( $unique_id ); ?>"
+		/>
+		<input type="hidden" name="post_type" value="product" />
+		<button type="submit" value="Buscar" class="">Buscar</button>
+	</form>
+	<div id="<?php echo esc_attr( $result_id ); ?>" class="search-results hidden">
 	</div>
+
 </div>
