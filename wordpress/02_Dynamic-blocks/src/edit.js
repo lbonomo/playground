@@ -11,7 +11,16 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, useState, InspectorControls } from '@wordpress/block-editor';
+
+/**
+ * 
+ */
+
+import { TextControl,PanelBody } from '@wordpress/components';
+// import { InputControl } from '@wordpress/components';
+// import { useState } from 'react';
+// import { useState } from 'preact';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -27,13 +36,37 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
+	// const [ value, setValue ] = useState( '' );
+	const { placeholder } = attributes;
+	// const columnStyles = { columnCount };
+	// const [ value, setValue ] = useState( '' );
+	const [ value, setValue ] = ['',''];
+
+	function onChangeTextField( newValue ) {
+		setAttributes( { placeholder: newValue } );
+	}
 
 	return (
-		<p { ...blockProps }>
-			{ __(
-				'Example Interactive TypeScript – hello from the editor!',
-				'dynamic-blocks'
-			) }
-		</p>
+		<div { ...blockProps } >
+			<InspectorControls key="setting">
+				<PanelBody title={ __( 'Settings' ) }>
+					<TextControl
+						__nextHasNoMarginBottom
+						__next40pxDefaultSize
+						label="Search placeholder"
+						help="Set the search placeholder text"
+						onChange={ onChangeTextField }
+						value={ placeholder }
+					/>
+				</PanelBody>
+			</InspectorControls>
+			
+			<form role="search" method="get" action="">
+				<input type="search" placeholder={ placeholder } disabled />
+				<input type="hidden" name="post_type" value="product" />
+				<button type="submit" value="Buscar">Buscar</button>
+			</form>
+			<div id="result-3" className="search-results hidden"></div>
+		</div>
 	);
 }

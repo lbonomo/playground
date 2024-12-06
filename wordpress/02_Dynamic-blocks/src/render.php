@@ -10,9 +10,11 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
+
 // Generates a unique id for aria-controls.
 $unique_id = wp_unique_id( 'p-' );
 $result_id = wp_unique_id( 'result-' );
+
 
 // Adds the global state.
 wp_interactivity_state(
@@ -41,7 +43,7 @@ $context = array('searchTerm' => false);
 			data-wp-bind--aria-expanded="context.searchTerm"
 			
 			type="search" 
-			placeholder="Buscar productos…" 
+			placeholder="<?php echo esc_attr( $attributes['placeholder'] ); ?>"
 			value=""
 			autocomplete="off"
 			name="s"

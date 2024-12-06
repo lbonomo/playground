@@ -3,13 +3,60 @@
 	"apiVersion": 3,
 	"name": "dynamic-blocks/dynamic-blocks",
 	"version": "0.1.0",
-	"title": "Example Interactive TypeScript",
+	"title": "Interactive search",
 	"category": "widgets",
-	"icon": "media-interactive",
+	"icon": "search",
 	"description": "An interactive block with the Interactivity API using TypeScript.",
 	"example": {},
 	"supports": {
-		"interactivity": true
+		"interactivity": true,
+		"anchor": true,
+		"customClassName": true,
+		"align": [ "left", "right", "full" ],
+		"alignWide": true,
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
+		"color": {
+			"gradients": true,
+			"background": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"layout": true,
+		"lock": true,
+		"renaming": true
+	},
+	"attributes": {
+		"style": {
+			"type": "object",
+			"default": {
+				"color": {
+					"background": "#fbf9f4"
+				},
+				"spacing": {
+					"padding": {
+						"top": 0,
+						"right": 0,
+						"botton": 0,
+						"left": 0
+					},
+					"margin": {
+						"top": 0,
+						"right": 0,
+						"botton": 0,
+						"left": 0
+					}
+				}
+			}
+		},
+		"placeholder": {
+			"type": "string",
+			"default": "Que estás buscando?"
+		}
 	},
 	"textdomain": "dynamic-blocks",
 	"editorScript": "file:./index.js",

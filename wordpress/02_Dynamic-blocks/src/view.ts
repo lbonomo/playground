@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { store, getContext } from '@wordpress/interactivity';
+import { createElement, render } from 'preact';
 
 type ServerState = {
 	state: {
@@ -63,7 +64,7 @@ const search_products = async( term: string ) => {
 	renderResult( await products.json() )
 }
 
-const renderResult = async( posts:WP_Post[]) => {
+const renderResult2 = async( posts:WP_Post[]) => {
 	var innerHTML = ''
 	posts.forEach(post => {
 		let image = post._embedded?.['wp:featuredmedia'][0].media_details?.sizes.thumbnail.source_url
@@ -82,4 +83,30 @@ const renderResult = async( posts:WP_Post[]) => {
 	// return postDiv
 	console.log(innerHTML)
 	return innerHTML
+}
+
+
+const renderResult = async( posts:WP_Post[] ) => {
+
+	var innerHTML = ''
+	
+	posts.forEach(post => {
+		let image = post._embedded?.['wp:featuredmedia'][0].media_details?.sizes.thumbnail.source_url
+		innerHTML += `
+		<div class="line">
+			<a href="${post.link}">
+				<img src="${image}" />
+				<h2>${post.title.rendered}</h2>
+			</a>
+		</div>
+		`;
+	});
+
+	let vdom = createElement(
+		'p',              // a <p> element
+		{ class: 'big' }, // with class="big"
+		innerHTML    // and the text "Hello World!"
+	);
+
+	render(vdom, document.body);
 }
