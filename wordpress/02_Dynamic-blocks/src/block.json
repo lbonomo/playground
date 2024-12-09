@@ -12,7 +12,7 @@
 		"interactivity": true,
 		"anchor": true,
 		"customClassName": true,
-		"align": [ "left", "right", "full" ],
+		"align": [ "left", "right", "full", "wide"],
 		"alignWide": true,
 		"background": {
 			"backgroundImage": true,

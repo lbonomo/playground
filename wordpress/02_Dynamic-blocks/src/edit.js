@@ -11,16 +11,13 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, useState, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 
 /**
- * 
+ * Core components.
  */
 
-import { TextControl,PanelBody } from '@wordpress/components';
-// import { InputControl } from '@wordpress/components';
-// import { useState } from 'react';
-// import { useState } from 'preact';
+import { TextControl, PanelBody } from '@wordpress/components';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -36,37 +33,36 @@ import { TextControl,PanelBody } from '@wordpress/components';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
-	// const [ value, setValue ] = useState( '' );
 	const { placeholder } = attributes;
-	// const columnStyles = { columnCount };
-	// const [ value, setValue ] = useState( '' );
-	const [ value, setValue ] = ['',''];
-
 	function onChangeTextField( newValue ) {
 		setAttributes( { placeholder: newValue } );
 	}
 
 	return (
-		<div { ...blockProps } >
+		<>
+			{/* Inspector panel controls */}
 			<InspectorControls key="setting">
-				<PanelBody title={ __( 'Settings' ) }>
+				<PanelBody title={ __( 'Search settings' ) }>
 					<TextControl
-						__nextHasNoMarginBottom
-						__next40pxDefaultSize
-						label="Search placeholder"
+						label={ __( 'Search placeholder' ) }
 						help="Set the search placeholder text"
 						onChange={ onChangeTextField }
 						value={ placeholder }
 					/>
 				</PanelBody>
 			</InspectorControls>
-			
-			<form role="search" method="get" action="">
-				<input type="search" placeholder={ placeholder } disabled />
-				<input type="hidden" name="post_type" value="product" />
-				<button type="submit" value="Buscar">Buscar</button>
-			</form>
-			<div id="result-3" className="search-results hidden"></div>
-		</div>
+			{/* Inspector panel controls */}
+
+			{/* Block */}
+			<div { ...blockProps } >
+				<form role="search" method="get" action="">
+					<input type="search" placeholder={ placeholder } disabled />
+					<input type="hidden" name="post_type" value="product" />
+					<button type="submit" value="Buscar">Buscar</button>
+				</form>
+				<div id="result-3" className="search-results hidden"></div>
+			</div>
+			{/* Block */}
+		</>
 	);
 }
