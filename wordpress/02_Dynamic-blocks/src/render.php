@@ -20,10 +20,8 @@ $result_id = wp_unique_id( 'result-' );
 wp_interactivity_state(
 	'dynamic-blocks',
 	array(
-		'isDark'    => false,
-		'darkText'  => esc_html__( 'Switch to Light', 'dynamic-blocks' ),
-		'lightText' => esc_html__( 'Switch to Dark', 'dynamic-blocks' ),
-		'themeText'	=> esc_html__( 'Switch to Dark', 'dynamic-blocks' ),
+		'showResult' => false,
+		'resultHTML' => ''
 	)
 );
 
@@ -34,7 +32,12 @@ $context = array('searchTerm' => false);
 <div
 	<?php echo get_block_wrapper_attributes(); ?>
 	data-wp-interactive="dynamic-blocks"
+	data-wp-effect="effects.showResult"
 	data-wp-watch="callbacks.isThereData"
+	
+	aria-controls="<?php echo esc_attr( $result_id ); ?>"
+	data-wp-context='{"showResult": false}'
+	
 >
 	<form role="search" method="get" action="">
 		<input
@@ -47,12 +50,18 @@ $context = array('searchTerm' => false);
 			value=""
 			autocomplete="off"
 			name="s"
-			aria-controls="<?php echo esc_attr( $unique_id ); ?>"
 		/>
 		<input type="hidden" name="post_type" value="product" />
 		<button type="submit" value="Buscar" class="">Buscar</button>
 	</form>
-	<div id="<?php echo esc_attr( $result_id ); ?>" class="search-results hidden">
+	<div 
+		id="<?php echo esc_attr( $result_id ); ?>"
+		class="search-results"
+		data-wp-text="state.resultHTML"
+		data-wp-bind--hidden="!context.showResult"
+		data-wp-show="!context.showResult"
+		data-wp-bind--aria-expanded="context.showResult"
+	>
 	</div>
 
 </div>

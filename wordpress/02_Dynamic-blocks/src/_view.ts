@@ -6,10 +6,12 @@ import { createElement, render } from 'preact';
 
 type ServerState = {
 	state: {
+		showResult: boolean;
 		searchTerm: string;
 		searchResults: {
 			posts: WP_Post[];
 		};
+		resultHTML: string;
 	};
 };
 
@@ -29,20 +31,32 @@ type WP_Post = {
 
 const storeDef = {
 	actions: {
-		search: ( event:any ) => {
-			const term = event.currentTarget.value
-			if ( term.length > 3 ) {
-				search_products( term )
-			}
+		search: async ( { context } ) => {
+			console.log(context)
+			// context.showResult = true
+			// const term = event.currentTarget.value
+			// console.log(event)
+			// if ( term.length > 3 ) {
+			// 	search_products( term )
+			// 	// event.context.showResult = true
+			// } else {
+			// 	state.resultHTML = ''
+			// }
 		}
 	},
 	callbacks: {
 		isThereData: () => {
 			const context = getContext();
 			// Log the value of `isOpen` each time it changes.
-			console.log(`Is open: ${context}`);
-
+			console.log(context);
+			// context.text = context.text === '' ? result : '';
 		},
+	},
+	effects: {
+		showResult: ({context}) => {
+			console.log('Running show result')
+			console.log(context)
+		}
 	}
 };
 
@@ -57,11 +71,11 @@ const search_products = async( term: string ) => {
 	// search=${term} - Term to seach.
 	// search_columns=post_title - Seach just on post_title
 	// _fields=id,title,link,_links,_embedded - Just get id, title and embed fields
-	var url = `?rest_route=/wp/v2/posts&_embed&search_columns=post_title&_fields=id,title,link,_links,_embedded&search=${term}`
+	var url = `?rest_route=/wp/v2/posts&_embed&search_columns=post_title,post_content&_fields=id,title,link,_links,_embedded&search=${term}`
 
 	const products = await fetch(url);
 	
-	renderResult( await products.json() )
+	return await renderResult( await products.json() )
 }
 
 const renderResult2 = async( posts:WP_Post[]) => {
@@ -87,9 +101,7 @@ const renderResult2 = async( posts:WP_Post[]) => {
 
 
 const renderResult = async( posts:WP_Post[] ) => {
-
 	var innerHTML = ''
-	
 	posts.forEach(post => {
 		let image = post._embedded?.['wp:featuredmedia'][0].media_details?.sizes.thumbnail.source_url
 		innerHTML += `
@@ -102,11 +114,7 @@ const renderResult = async( posts:WP_Post[] ) => {
 		`;
 	});
 
-	let vdom = createElement(
-		'p',              // a <p> element
-		{ class: 'big' }, // with class="big"
-		innerHTML    // and the text "Hello World!"
-	);
-
-	render(vdom, document.body);
+	state.resultHTML = innerHTML
 }
+
+

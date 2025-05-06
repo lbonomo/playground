@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: http://localhost:8888/?rest_route=/wp/v2/posts&_embed&search_columns=post_title&_fields=id,title,link,_links,_embedded&search=hell
+  url: http://localhost:8888/?rest_route=/wp/v2/posts&_embed&search_columns=post_title,post_content&_fields=id,title,link,_links,_embedded&search=eficiente&per_page=5
   body: none
   auth: none
 }
@@ -13,7 +13,8 @@ get {
 query {
   rest_route: /wp/v2/posts
   _embed: 
-  search_columns: post_title
+  search_columns: post_title,post_content
   _fields: id,title,link,_links,_embedded
-  search: hell
+  search: eficiente
+  per_page: 5
 }
