@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dynamic-blocks/dynamic-blocks",
+	"version": "0.1.0",
+	"title": "Interactive search",
+	"category": "widgets",
+	"icon": "search",
+	"description": "An interactive block with the Interactivity API using TypeScript.",
+	"example": {},
+	"supports": {
+		"interactivity": true,
+		"anchor": true,
+		"customClassName": true,
+		"align": [ "left", "right", "full", "wide"],
+		"alignWide": true,
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
+		"color": {
+			"gradients": true,
+			"background": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"layout": true,
+		"lock": true,
+		"renaming": true
+	},
+	"attributes": {
+		"style": {
+			"type": "object",
+			"default": {
+				"color": {
+					"background": "#fbf9f4"
+				},
+				"spacing": {
+					"padding": {
+						"top": 0,
+						"right": 0,
+						"botton": 0,
+						"left": 0
+					},
+					"margin": {
+						"top": 0,
+						"right": 0,
+						"botton": 0,
+						"left": 0
+					}
+				}
+			}
+		},
+		"placeholder": {
+			"type": "string",
+			"default": "Que estás buscando?"
+		}
+	},
+	"textdomain": "dynamic-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.ts"
+}

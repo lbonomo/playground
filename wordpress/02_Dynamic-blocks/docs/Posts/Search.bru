@@ -1,0 +1,20 @@
+meta {
+  name: Search
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8888/?rest_route=/wp/v2/posts&_embed&search_columns=post_title,post_content&_fields=id,title,link,_links,_embedded&search=eficiente&per_page=5
+  body: none
+  auth: none
+}
+
+query {
+  rest_route: /wp/v2/posts
+  _embed: 
+  search_columns: post_title,post_content
+  _fields: id,title,link,_links,_embedded
+  search: eficiente
+  per_page: 5
+}
