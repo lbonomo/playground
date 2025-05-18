@@ -13,7 +13,8 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"server": "wp-env"
+		"server": "wp-env",
+		"log": "tail -f $(npm --silent run env install-path 2> /dev/null)/WordPress/wp-content/debug.log"
 	},
 	"files": [
 		"[^.]*"
