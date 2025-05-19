@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Dolibarr",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

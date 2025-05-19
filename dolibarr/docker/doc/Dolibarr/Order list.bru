@@ -1,0 +1,23 @@
+meta {
+  name: Order list
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8000/api/index.php/orders?DOLAPIKEY={{API_Key}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  DOLAPIKEY: {{API_Key}}
+}
+
+script:pre-request {
+  let token = bru.getEnvVar("API_Key")
+  if (typeof token !== "string") {  
+    await bru.runRequest('get_token')
+  }
+  
+}

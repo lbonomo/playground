@@ -1,0 +1,33 @@
+meta {
+  name: Create Order
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:8000/api/index.php/orders?DOLAPIKEY={{API_Key}}
+  body: json
+  auth: inherit
+}
+
+params:query {
+  DOLAPIKEY: {{API_Key}}
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "socid": 1, 
+    "date": 1595196000,
+    "type": 0, 
+    "lines": [
+      {
+        "fk_product": 1, 
+        "qty": 1
+      }
+    ]
+  }
+}

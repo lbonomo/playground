@@ -1,0 +1,23 @@
+meta {
+  name: Explorer
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8000/api/index.php/explorer/swagger.json?DOLAPIKEY={{API_Key}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  DOLAPIKEY: {{API_Key}}
+}
+
+script:pre-request {
+  let token = bru.getEnvVar("API_Key")
+  if (typeof token !== "string") {  
+    await bru.runRequest('get_token')
+  }
+  
+}

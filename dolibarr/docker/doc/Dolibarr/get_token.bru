@@ -1,0 +1,35 @@
+meta {
+  name: get_token
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8000/api/index.php/login?login={{username}}&password={{password}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  login: {{username}}
+  password: {{password}}
+}
+
+script:pre-request {
+  console.log("Getting api token...")
+}
+
+script:post-response {
+  bru.setEnvVar("API_Key", res.getBody().success.token);
+  
+}
+
+tests {
+  test("should be able to login", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+   
+  test("should return json", function () {
+    expect(res.getBody().success.code).to.eql(200);
+  });
+}
