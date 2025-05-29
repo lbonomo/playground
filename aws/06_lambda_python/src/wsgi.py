@@ -1,4 +1,8 @@
 from app import app
+import awsgi
 
-def app_handler(event, context):
-    return app(event, context)
+def handler(event, context):
+    """
+    AWS Lambda handler function to process incoming requests.
+    """
+    return awsgi.response(app, event, context)    

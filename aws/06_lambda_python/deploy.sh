@@ -8,3 +8,6 @@ cp src/app.py src/wsgi.py build/
 cd build
 zip -r ../lambda.zip .
 cd ..
+
+
+terraform apply
