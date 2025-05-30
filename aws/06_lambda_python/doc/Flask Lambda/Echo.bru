@@ -1,0 +1,17 @@
+meta {
+  name: Echo
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5000/echo
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "message":"Hola mundo!"
+  }
+}

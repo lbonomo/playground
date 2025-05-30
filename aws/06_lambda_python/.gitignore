@@ -1,3 +1,6 @@
-env/
-lambda.zip
+src/__pycache__/
 build/
+env/
+terraform.tfstate 
+terraform.tfstate.backup
+lambda.zip
