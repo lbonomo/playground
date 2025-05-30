@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Flask Lambda",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
