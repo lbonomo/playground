@@ -32,10 +32,10 @@ woocommerce_client --help
 
 ### Ejemplo: Obtener un producto
 
-Puedes obtener la información de un producto específico usando el comando `getProduct`. Por ejemplo, para obtener el producto con ID 123 y mostrar el JSON de forma legible en la consola:
+Puedes obtener la información de un producto específico usando el comando `getProduct`. Por ejemplo, para obtener el producto con SKU CHAM047 y mostrar el JSON de forma legible en la consola:
 
 ```bash
-woocommerce_client getProduct 123 | jq
+woocommerce_client --action getProductBySKU --sku CHAM047 | jq
 ```
 
 Asegúrate de tener instalado [`jq`](https://stedolan.github.io/jq/) para formatear la salida JSON.
