@@ -43,6 +43,9 @@ fn main() {
         Some("exportProducts") => {
             integrations::woocommerce::export_products(&_config);
         }
+        Some("exportProductsToHTML") => {
+            integrations::woocommerce::export_products_html(&_config);
+        }
         _ => {
             Args::command().print_help().unwrap();
             std::process::exit(1);

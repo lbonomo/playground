@@ -1,0 +1,204 @@
+[
+  {
+    "id": 306,
+    "name": "Big Ben London Noir 85ml Edp",
+    "slug": "big-ben-london-noir-85ml-edp",
+    "permalink": "https://perfumeriaarabes.com.ar/producto/big-ben-london-noir-85ml-edp/",
+    "date_created": "2025-04-17T09:27:04",
+    "date_created_gmt": "2025-04-17T12:27:04",
+    "date_modified": "2025-04-29T08:34:14",
+    "date_modified_gmt": "2025-04-29T11:34:14",
+    "type": "simple",
+    "status": "publish",
+    "featured": false,
+    "catalog_visibility": "visible",
+    "description": "",
+    "short_description": "",
+    "sku": "CHAM047",
+    "price": "42",
+    "regular_price": "50",
+    "sale_price": "42",
+    "date_on_sale_from": null,
+    "date_on_sale_from_gmt": null,
+    "date_on_sale_to": null,
+    "date_on_sale_to_gmt": null,
+    "on_sale": true,
+    "purchasable": true,
+    "total_sales": 0,
+    "virtual": false,
+    "downloadable": false,
+    "downloads": [],
+    "download_limit": -1,
+    "download_expiry": -1,
+    "external_url": "",
+    "button_text": "",
+    "tax_status": "taxable",
+    "tax_class": "",
+    "manage_stock": true,
+    "stock_quantity": 10,
+    "backorders": "no",
+    "backorders_allowed": false,
+    "backordered": false,
+    "low_stock_amount": null,
+    "sold_individually": false,
+    "weight": "",
+    "dimensions": {
+      "length": "",
+      "width": "",
+      "height": ""
+    },
+    "shipping_required": true,
+    "shipping_taxable": true,
+    "shipping_class": "",
+    "shipping_class_id": 0,
+    "reviews_allowed": true,
+    "average_rating": "0.00",
+    "rating_count": 0,
+    "upsell_ids": [],
+    "cross_sell_ids": [],
+    "parent_id": 0,
+    "purchase_note": "",
+    "categories": [
+      {
+        "id": 19,
+        "name": "Perfume",
+        "slug": "perfume"
+      }
+    ],
+    "tags": [],
+    "images": [
+      {
+        "id": 305,
+        "date_created": "2025-04-17T09:27:01",
+        "date_created_gmt": "2025-04-17T12:27:01",
+        "date_modified": "2025-04-17T09:27:04",
+        "date_modified_gmt": "2025-04-17T12:27:04",
+        "src": "https://perfumeriaarabes.com.ar/wp-content/uploads/2025/04/CHAM047.webp",
+        "name": "CHAM047",
+        "alt": ""
+      }
+    ],
+    "attributes": [
+      {
+        "id": 3,
+        "name": "Inspiracion",
+        "slug": "pa_inspiracion",
+        "position": 0,
+        "visible": true,
+        "variation": false,
+        "options": [
+          "Emper Creation"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Genero",
+        "slug": "pa_genero",
+        "position": 0,
+        "visible": true,
+        "variation": false,
+        "options": [
+          "Hombre"
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Tamaño",
+        "slug": "pa_size",
+        "position": 0,
+        "visible": true,
+        "variation": false,
+        "options": [
+          "85ML"
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Tipo",
+        "slug": "pa_class",
+        "position": 0,
+        "visible": true,
+        "variation": false,
+        "options": [
+          "Lujo"
+        ]
+      }
+    ],
+    "default_attributes": [],
+    "variations": [],
+    "grouped_products": [],
+    "menu_order": 0,
+    "price_html": "<ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;</span>&nbsp;42,00</bdi></span></ins> <del><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;</span>&nbsp;50,00</bdi></span></del>",
+    "related_ids": [
+      92,
+      110,
+      82,
+      72,
+      98
+    ],
+    "meta_data": [
+      {
+        "id": 2615,
+        "key": "_price_wholesaler_a",
+        "value": "30"
+      },
+      {
+        "id": 2616,
+        "key": "_price_wholesaler_b",
+        "value": "35"
+      },
+      {
+        "id": 2617,
+        "key": "_price_wholesaler_c",
+        "value": "37"
+      },
+      {
+        "id": 2618,
+        "key": "_price_wholesaler_d",
+        "value": "40"
+      },
+      {
+        "id": 2619,
+        "key": "_price_wholesaler_other",
+        "value": "45"
+      },
+      {
+        "id": 7950,
+        "key": "_elementor_page_assets",
+        "value": []
+      }
+    ],
+    "stock_status": "instock",
+    "has_options": false,
+    "post_password": "",
+    "global_unique_id": "",
+    "brands": [
+      {
+        "id": 17,
+        "name": "Le Chameau",
+        "slug": "le-chameau"
+      }
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://perfumeriaarabes.com.ar/wp-json/wc/v3/products/306",
+          "targetHints": {
+            "allow": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://perfumeriaarabes.com.ar/wp-json/wc/v3/products"
+        }
+      ]
+    }
+  }
+]

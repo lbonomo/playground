@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Productos</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+.print-btn {
+    display: block;
+    margin: 24px auto 0 auto;
+    padding: 10px 24px;
+    font-size: 16px;
+    background: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+@media print {
+    .print-btn, h1 { display: none !important; }
+    body { background: #fff; }
+    .cards { gap: 0 !important; }
+    .card {
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        margin-bottom: 12mm !important;
+    }
+}
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin: 24px auto;
+    max-width: 800px;
+}
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #0001;
+    width: 100%;
+    max-width: 700px;
+    padding: 24px 32px;
+    text-align: left;
+    margin-bottom: 0;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.card img {
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+}
+.card-content {
+    flex: 1;
+}
+.card a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+.card .sku, .card .price {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #444;
+}
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Imprimir</button>
+<h1>Productos</h1>
+<div class="cards">
+{{cards}}
+</div>
+</body>
+</html>
