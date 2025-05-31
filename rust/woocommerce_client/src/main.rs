@@ -40,6 +40,9 @@ fn main() {
             let sku = args.sku.as_deref().expect("Debe proporcionar --sku <valor>");
             integrations::woocommerce::get_product(&_config, None, Some(sku));
         }
+        Some("exportProducts") => {
+            integrations::woocommerce::export_products(&_config);
+        }
         _ => {
             Args::command().print_help().unwrap();
             std::process::exit(1);
