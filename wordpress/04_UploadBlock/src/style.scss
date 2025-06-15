@@ -1,0 +1,78 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+// Variables SVG Icon for submint button
+:root {
+    --upload-block-icon: url("data:image/svg+xml,%3Csvg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpolygon points='73.265,13.789 30.958,56.097 19.219,44.357 61.525,2.045'/%3E%3Crect x='51.943' y='19.938' width='19.055' height='60.21'/%3E%3Cpolygon points='61.454,2 103.776,44.29 92.056,56.03 49.727,13.723'/%3E%3Crect x='10' y='99.575' width='103' height='17'/%3E%3Crect x='6.5' y='68.576' width='17' height='48'/%3E%3Crect x='98.5' y='68.576' width='17' height='48'/%3E%3C/svg%3E");
+}
+
+.wp-block-upload-block-upload-block {
+	display: flex;
+	flex-direction: column;
+
+	form {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		gap: 1rem;
+
+		input[type="file"] {
+			margin: 0;
+			font-size: 1rem;
+			width: 350px;
+			max-width: 100%;
+			color: #444;
+			padding: 5px;
+			margin: 0;
+			background: #fff;
+			border-radius: 10px;
+			border: 1px solid #555;
+			
+			&::file-selector-button {
+				background-color: #0073aa;
+				color: #fff;
+				border: none;
+				border-radius: 5px;
+				padding: 5px 10px;
+				cursor: pointer;
+				&:hover {
+					background-color: #005177;
+				}
+			}
+	
+		}
+
+		button[type="submit"] {
+			background-color: #0073aa;
+			font-size: 1rem;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			margin: 0;
+			cursor: pointer;
+
+			&:hover {
+				background-color: #005177;
+			}
+
+			&::after {
+				content: "";
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				background-image: var(--upload-block-icon);
+				background-size: contain;
+				margin-left: 0.7rem;
+				bottom: -0.1rem;
+				position: relative;
+		}
+		}
+	}
+}

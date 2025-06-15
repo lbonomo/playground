@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "upload-block/upload-block",
+	"version": "0.1.0",
+	"title": "Upload file",
+	"category": "widgets",
+	"icon": "upload",
+	"description": "Upload file block allows users to upload files directly",
+	"supports": {
+		"anchor": true,
+		"customClassName": true,
+		"align": [ "left", "right", "full", "wide"],
+		"alignWide": true,
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
+		"color": {
+			"gradients": true,
+			"background": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"layout": true,
+		"lock": true,
+		"renaming": true
+	},
+	"textdomain": "upload-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
