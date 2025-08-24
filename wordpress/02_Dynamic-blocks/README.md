@@ -2,7 +2,7 @@
 
 
 ## Instalation
-`npm intall`
+`npm install`
 
 
 ## Development Server.
