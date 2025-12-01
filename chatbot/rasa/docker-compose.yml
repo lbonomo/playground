@@ -1,0 +1,17 @@
+services:
+  rasa:
+    build: .
+    image: my-rasa-image:latest
+    environment:
+      # Esto le dice a Docker: "Busca esta variable en el host y úsala aquí"
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./server:/app
+    # Run as the host user to avoid permission issues
+    user: "1000:1000"
+    # Default command to run the Rasa server
+    # When initializing, we will override this
+    # rasa run -m models --enable-api --cors "*" --debug
+    command: run --enable-api --cors "*"

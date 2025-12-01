@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTML Example</title>
+        <script
+            type="module"
+            src="https://unpkg.com/@rasahq/chat-widget-ui/dist/rasa-chatwidget/rasa-chatwidget.esm.js"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/@rasahq/chat-widget-ui/dist/rasa-chatwidget/rasa-chatwidget.css"
+        />
+
+        <style>
+            :root {
+                --launcher-background-color: transparent;
+                --message-robot-icon-background-color: transparent;
+                --header-background-color: grey;
+                --message-user-background-color: mediumslateblue;
+                --message-user-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <rasa-chatbot-widget
+            server-url="http://127.0.0.1:5005/"
+            onChatWidgetOpened="{console.log}"
+            widget-title="Onur"
+            bot-icon="https://freesvg.org/storage/img/thumb/1538298822.png"
+            widget-icon="https://freesvg.org/storage/img/thumb/1538298822.png"
+        >
+        </rasa-chatbot-widget>
+    </body>
+</html>
