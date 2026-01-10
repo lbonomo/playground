@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare WebSocket Push Demo</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+        h1 { color: #f6821f; } /* Cloudflare Orange */
+        #status { font-weight: bold; margin-bottom: 1rem; }
+        .status-connected { color: green; }
+        .status-disconnected { color: red; }
+        #messages { border: 1px solid #ccc; padding: 1rem; height: 300px; overflow-y: auto; background: #f9f9f9; border-radius: 4px; }
+        .message { border-bottom: 1px solid #eee; padding: 0.5rem 0; }
+        .message:last-child { border-bottom: none; }
+        .controls { margin-top: 1rem; display: flex; gap: 0.5rem; }
+        button { padding: 0.5rem 1rem; cursor: pointer; background: #333; color: white; border: none; border-radius: 4px; }
+        button:hover { background: #555; }
+        input { padding: 0.5rem; flex-grow: 1; border: 1px solid #ccc; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Cloudflare WebSocket Push</h1>
+    <div id="status" class="status-disconnected">Status: Disconnected</div>
+    
+    <div id="messages"></div>
+
+    <div class="controls">
+        <input type="text" id="broadcastInput" placeholder="Enter message to broadcast..." />
+        <button id="broadcastBtn">Broadcast Push</button>
+    </div>
+
+    <script>
+        const statusEl = document.getElementById('status');
+        const messagesEl = document.getElementById('messages');
+        const broadcastInput = document.getElementById('broadcastInput');
+        const broadcastBtn = document.getElementById('broadcastBtn');
+        
+        let socket;
+
+        function connect() {
+            // Determine protocol (ws or wss) based on current page
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//${window.location.host}/websocket`;
+
+            socket = new WebSocket(wsUrl);
+
+            socket.onopen = () => {
+                statusEl.textContent = 'Status: Connected';
+                statusEl.className = 'status-connected';
+                appendMessage('<em>System: Connected to WebSocket server</em>');
+            };
+
+            socket.onmessage = (event) => {
+                appendMessage(event.data);
+            };
+
+            socket.onclose = () => {
+                statusEl.textContent = 'Status: Disconnected (Retrying...)';
+                statusEl.className = 'status-disconnected';
+                socket = null;
+                // Auto-reconnect after 2 seconds
+                setTimeout(connect, 2000);
+            };
+
+            socket.onerror = (error) => {
+                console.error("WebSocket Error:", error);
+            };
+        }
+
+        function appendMessage(htmlOrText) {
+            const div = document.createElement('div');
+            div.className = 'message';
+            div.innerHTML = htmlOrText; // Warning: InnerHTML used for demo simplicity
+            messagesEl.appendChild(div);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        // Broadcast Button Logic
+        broadcastBtn.addEventListener('click', async () => {
+            const text = broadcastInput.value;
+            if (!text) return;
+
+            try {
+                // We use a regular HTTP fetch to trigger the broadcast on the Worker
+                const res = await fetch(`/broadcast?message=${encodeURIComponent(text)}`);
+                if (res.ok) {
+                    broadcastInput.value = '';
+                    console.log("Broadcast triggered");
+                } else {
+                    alert('Broadcast failed: ' + res.statusText);
+                }
+            } catch (err) {
+                console.error("Broadcast error:", err);
+                alert('Broadcast error');
+            }
+        });
+
+        // Initialize connection
+        connect();
+    </script>
+</body>
+</html>
