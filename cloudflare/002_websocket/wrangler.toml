@@ -1,0 +1,17 @@
+name = "002_websocket"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# Automatically instantiate the Durable Object for the WebSocket
+[durable_objects]
+bindings = [
+  { name = "WEBSOCKET_SOURCE", class_name = "WebSocketSource" }
+]
+
+# Migration to create the Durable Object class
+[[migrations]]
+tag = "v1"
+new_classes = ["WebSocketSource"]
+
+[site]
+bucket = "./public"
