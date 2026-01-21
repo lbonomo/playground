@@ -1,0 +1,15 @@
+name: geo
+recipe: laravel
+config:
+  webroot: public/
+services:
+  database:
+    type: mariadb:10.6
+    portforward: 3306
+    creds:
+      user: geo
+      password: secret
+      database: geo
+    overrides:
+      environment:
+        ALLOW_EMPTY_PASSWORD: "yes"
