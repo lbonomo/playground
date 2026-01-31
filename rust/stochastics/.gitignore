@@ -1,5 +1,4 @@
 create-samples.sh
 output.png
-stochastics.1.0.0
-stochastics.1.2.0
+stochastics.?.?.?
 target/

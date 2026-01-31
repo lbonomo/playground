@@ -1,64 +1,66 @@
 use image::{GrayImage, Luma, RgbImage, Rgb};
 use crate::config::DotShape;
 
+
+
 /// Process a single channel (grayscale or separated color channel)
 pub fn process_channel(img: &GrayImage, scale: f32, angle: f32, shape: DotShape) -> GrayImage {
     let (width, height) = img.dimensions();
     let mut out_img = GrayImage::new(width, height);
 
     // Rotation from input angle
-    let theta = angle.to_radians();
+    // offset 90 degrees so 0 is horizontal right
+    let theta = (angle + 90.0).to_radians();
     let cos_theta = theta.cos();
     let sin_theta = theta.sin();
 
     // Frequency of the screen (inverse of scale/period)
-    // Scale roughly corresponds to the distance between dots in pixels
-    let frequency = std::f32::consts::PI / scale;
+    let frequency = std::f32::consts::PI * 2.0 / scale;
+    let two_pi = 2.0 * std::f32::consts::PI;
 
     for y in 0..height {
         for x in 0..width {
             let pixel = img.get_pixel(x, y);
             let intensity = pixel[0] as f32 / 255.0;
 
-            // Rotate coordinates
+            // Ideal coordinate logic:
+            // 1. Map (x, y) to rotated screen space (u, v)
             let u = x as f32 * cos_theta - y as f32 * sin_theta;
             let v = x as f32 * sin_theta + y as f32 * cos_theta;
 
-            // Screen function calculation
+            // 2. Determine "cell" coordinates in phase space
+            let phase_u = u * frequency;
+            let phase_v = v * frequency;
+
+            // 4. Apply Screen Function
             let screen_val = match shape {
                 DotShape::Euclidean => {
-                    // Classic "Euclidean" (Cosine-based): (cos(u) + cos(v)) / 2
-                    // Range: [-1, 1]
-                    ((u * frequency).cos() + (v * frequency).cos()) / 2.0
+                    // Cosine-based: (cos(u) + cos(v)) / 2
+                    ((phase_u).cos() + (phase_v).cos()) / 2.0
                 }
                 DotShape::Line => {
-                    // Line screen: cos(u)
-                    // Range: [-1, 1]
-                    (u * frequency).cos()
+                     // Line screen: cos(u)
+                     (phase_u).cos()
                 }
                 DotShape::Round => {
-                    // For now, falling back to Euclidean as a robust default for "Round"
-                    // until a specific super-cell implementation is added.
-                    ((u * frequency).cos() + (v * frequency).cos()) / 2.0
+                    // Distance based.
+                    // Center of nearest peak in Cosine space is at multiples of 2*PI.
+                    let du = phase_u - (phase_u / two_pi).round() * two_pi;
+                    let dv = phase_v - (phase_v / two_pi).round() * two_pi;
+                    
+                    // Distance from center (0,0) in phase space
+                    let dist = (du * du + dv * dv).sqrt();
+                    
+                    // Linear Cone: 1.0 - (dist / Normalizer)
+                    // Let Max = PI * sqrt(2).
+                    let max_dist = std::f32::consts::PI * std::f32::consts::SQRT_2;
+                    1.0 - 2.0 * (dist / max_dist)
                 }
             };
-
-            // Map intensity to threshold range.
-            // Screen goes from -1 (blackest) to 1 (whitest, peaks).
-            // We want intensity 0 -> Black, 1 -> White.
-            // If screen_val < mapped_intensity, then White, else Black?
-            // Let's align:
-            // High intensity (light) should be White.
-            // If intensity is 1.0, we want output White almost always.
-            // If intensity is 0.0, we want output Black almost always.
             
-            // Standard Thresholding:
-            // Normalize screen to [0, 1]
+            // 5. Threshold
             let norm_screen = (screen_val + 1.0) / 2.0;
-            
-            // However, dot screens are often inverted depending on print.
-            // Let's stick to: Output White if Intensity > Screen
-            
+
             let new_pixel = if intensity > norm_screen {
                 Luma([255])
             } else {
