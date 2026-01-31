@@ -38,6 +38,10 @@ struct Args {
     #[arg(short = 'S', long, value_enum)]
     shape: Option<String>,
 
+    /// Generate color halftone (simulated CMYK with angled screens)
+    #[arg(long)]
+    color: bool,
+
     /// Configuration file (JSON)
     #[arg(short, long)]
     config: Option<PathBuf>,
@@ -84,6 +88,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut final_brightness = 0;
     let mut final_contrast = 1.0;
     let mut final_shape = config::DotShape::Euclidean;
+    let mut final_color = false;
 
     // Load config if present
     if let Some(config_path) = &args.config {
@@ -93,6 +98,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         if let Some(b) = config.brightness { final_brightness = b; }
         if let Some(c) = config.contrast { final_contrast = c; }
         if let Some(s) = config.shape { final_shape = s; }
+        if let Some(c) = config.color { final_color = c; }
     }
 
     // CLI overrides
@@ -107,6 +113,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             _ => config::DotShape::Euclidean,
         };
     }
+    if args.color { final_color = true; }
 
     // Load the image
     let mut img = image::open(&args.input)?;
@@ -124,16 +131,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         img = img.adjust_contrast(final_contrast);
     }
     
-    // Convert input to grayscale for processing
-    let gray_img = img.to_luma8();
-
-    // Process image using the new module
-    let out_img = processor::process_image(&gray_img, final_scale, final_angle, final_shape.clone());
+    // Process image
+    let out_img = if final_color {
+        let rgb_img = img.to_rgb8();
+        let processed = processor::process_image_color(&rgb_img, final_scale, final_angle, final_shape.clone());
+        image::DynamicImage::ImageRgb8(processed)
+    } else {
+        let gray_img = img.to_luma8();
+        let processed = processor::process_channel(&gray_img, final_scale, final_angle, final_shape.clone());
+        image::DynamicImage::ImageLuma8(processed)
+    };
 
     out_img.save(&args.output)?;
     println!(
-        "Processed {:?} -> {:?} | Scale: {}, Angle: {}, Shape: {:?}, Brightness: {}, Contrast: {}",
-        args.input, args.output, final_scale, final_angle, final_shape, final_brightness, final_contrast
+        "Processed {:?} -> {:?} | Scale: {}, Angle: {}, Shape: {:?}, Brightness: {}, Contrast: {}, Color: {}",
+        args.input, args.output, final_scale, final_angle, final_shape, final_brightness, final_contrast, final_color
     );
 
     Ok(())

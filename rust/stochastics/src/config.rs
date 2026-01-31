@@ -17,6 +17,7 @@ pub struct Config {
     pub brightness: Option<i32>,
     pub contrast: Option<f32>,
     pub shape: Option<DotShape>,
+    pub color: Option<bool>,
 }
 
 impl Config {

@@ -1,7 +1,8 @@
-use image::{GrayImage, Luma};
+use image::{GrayImage, Luma, RgbImage, Rgb};
 use crate::config::DotShape;
 
-pub fn process_image(img: &GrayImage, scale: f32, angle: f32, shape: DotShape) -> GrayImage {
+/// Process a single channel (grayscale or separated color channel)
+pub fn process_channel(img: &GrayImage, scale: f32, angle: f32, shape: DotShape) -> GrayImage {
     let (width, height) = img.dimensions();
     let mut out_img = GrayImage::new(width, height);
 
@@ -65,6 +66,49 @@ pub fn process_image(img: &GrayImage, scale: f32, angle: f32, shape: DotShape) -
             };
 
             out_img.put_pixel(x, y, new_pixel);
+        }
+    }
+
+    out_img
+}
+
+/// Process a color image by separating channels and applying different screen angles
+pub fn process_image_color(img: &RgbImage, scale: f32, angle: f32, shape: DotShape) -> RgbImage {
+    let (width, height) = img.dimensions();
+    
+    // Separate channels
+    // We treat RGB as approximations for CMY for screen angles to avoid moire
+    // Red Channel (Cyan-ish role): Angle + 15
+    // Green Channel (Magenta-ish role): Angle + 75
+    // Blue Channel (Yellow-ish role): Angle + 0
+    // Ideally we would convert to CMYK, but processing RGB directly with offset angles is a common approximation.
+    
+    // Create new images for each channel to process them as grayscale
+    let mut r_img = GrayImage::new(width, height);
+    let mut g_img = GrayImage::new(width, height);
+    let mut b_img = GrayImage::new(width, height);
+
+    for y in 0..height {
+        for x in 0..width {
+            let p = img.get_pixel(x, y);
+            r_img.put_pixel(x, y, Luma([p[0]]));
+            g_img.put_pixel(x, y, Luma([p[1]]));
+            b_img.put_pixel(x, y, Luma([p[2]]));
+        }
+    }
+
+    let r_out = process_channel(&r_img, scale, angle + 15.0, shape.clone());
+    let g_out = process_channel(&g_img, scale, angle + 75.0, shape.clone());
+    let b_out = process_channel(&b_img, scale, angle + 0.0, shape); // Blue often stays at 0 or 90
+
+    // Recombine
+    let mut out_img = RgbImage::new(width, height);
+    for y in 0..height {
+        for x in 0..width {
+            let r = r_out.get_pixel(x, y)[0];
+            let g = g_out.get_pixel(x, y)[0];
+            let b = b_out.get_pixel(x, y)[0];
+            out_img.put_pixel(x, y, Rgb([r, g, b]));
         }
     }
 
