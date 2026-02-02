@@ -6,6 +6,7 @@ Larabel + Cloudflare (Websocket)
 composer install
 cp  .env.example .env
 php artisan key:generate
+php artisan db:seed
 ```
 
 
@@ -22,7 +23,7 @@ php artisan key:generate
     * Se definieron las relaciones en los modelos User (mensajes enviados/recibidos) y Message
       (remitente/destinatario).
       ```bash
-      php artisan migrate
+      php artisan migrate --seed
       ```
 3. Lógica del Chat:
     * `ChatController`: Maneja la visualización de la lista de usuarios, la sala de chat individual
@@ -59,9 +60,16 @@ Para ver el proyecto en acción, abre dos terminales y ejecuta los siguientes co
     php artisan serve
     ```
 
-  3. Iniciar el Servidor (Websocket):
+  3. Iniciar el Servidor (WebSocket con Cloudflare Workers):
+    Implementación en cloudflare-websocket/worker.js
+    Despliega el worker usando Wrangler o la interfaz de Cloudflare Workers.
+    El WebSocket solo transmite señales como:
+      - `newmessage` (para disparar la actualización del panel de mensajes)
+      - `user-online` / `user-offline` (para mostrar el estado de los usuarios)
+    No se envían datos de mensajes por el WebSocket, solo señales.
+    Ejemplo de despliegue local:
     ```bash
-    php artisan rever:start
+    wrangler dev cloudflare-websocket/worker.js
     ```
 
 

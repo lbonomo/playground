@@ -1,0 +1,17 @@
+name = "cloudflare-websocket-signal-server"
+
+main = "worker.js"
+compatibility_date = "2026-02-01"
+
+
+[durable_objects]
+bindings = [
+  { name = "CHAT_ROOM", class_name = "ChatRoom" }
+]
+
+[[migrations]]
+tag = "v1" # Upgrade this for each migration
+new_classes = ["ChatRoom"]
+
+[dev]
+port = 8787

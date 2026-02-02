@@ -1,0 +1,15 @@
+{
+  "name": "cloudflare-websocket-signal-server",
+  "version": "1.0.0",
+  "description": "WebSocket signaling server for Laravel chat using Cloudflare Workers. Only transmits signals, not message data.",
+  "main": "worker.js",
+  "scripts": {
+    "dev": "wrangler dev worker.js",
+    "deploy": "wrangler publish"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^4.61.1"
+  }
+}

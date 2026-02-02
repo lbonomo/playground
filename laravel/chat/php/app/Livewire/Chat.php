@@ -19,15 +19,7 @@ class Chat extends Component
     }
 
     // Definir los listeners para Echo
-    public function getListeners()
-    {
-        $ids = collect([Auth::id(), $this->user->id])->sort()->implode('_');
-        
-        // Escuchar en el canal de presencia 'chat.X_Y' el evento 'MessageSent'
-        return [
-            "echo-presence:chat.{$ids},MessageSent" => 'refreshMessages',
-        ];
-    }
+
 
     public function refreshMessages()
     {
@@ -48,7 +40,8 @@ class Chat extends Component
         ]);
 
         // Emitir el evento inmediatamente
-        broadcast(new MessageSent($message))->toOthers();
+        // Dispatch event so frontend can signal the WebSocket server
+        $this->dispatch('message-sent-to-db');
 
         $this->content = '';
     }
@@ -57,15 +50,15 @@ class Chat extends Component
     {
         // Obtener mensajes entre el usuario autenticado y el usuario seleccionado
         $messages = Message::with('sender')
-        ->where(function ($query) {
-            $query->where('from_user_id', Auth::id())
-                  ->where('to_user_id', $this->user->id);
-        })->orWhere(function ($query) {
-            $query->where('from_user_id', $this->user->id)
-                  ->where('to_user_id', Auth::id());
-        })
-        ->orderBy('created_at', 'asc')
-        ->get();
+            ->where(function ($query) {
+                $query->where('from_user_id', Auth::id())
+                    ->where('to_user_id', $this->user->id);
+            })->orWhere(function ($query) {
+                $query->where('from_user_id', $this->user->id)
+                    ->where('to_user_id', Auth::id());
+            })
+            ->orderBy('created_at', 'asc')
+            ->get();
 
         return view('livewire.chat', compact('messages'));
     }
