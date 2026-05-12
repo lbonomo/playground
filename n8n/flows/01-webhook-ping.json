@@ -1,0 +1,63 @@
+{
+  "name": "WebHook Ping",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "79781586-3c0e-49d8-94a2-f28aacea1219",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d80d7f66-b30a-4276-8d57-af22e0c60189",
+      "name": "Webhook",
+      "webhookId": "79781586-3c0e-49d8-94a2-f28aacea1219"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {
+          "responseCode": 200,
+          "responseKey": "pong"
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        240,
+        0
+      ],
+      "id": "0228c4b0-ba8f-4302-b33b-226ff815e948",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2f466daa-cc10-4ad9-9665-40c43c6ab2d2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "af6db141f032a24c551178e89321c9c11caa593f521103285e8d88938c65e9af"
+  },
+  "id": "e8aNqPhv3a3Srmuj",
+  "tags": []
+}

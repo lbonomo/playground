@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ethereum Price
+Comment=Check Ethereum price in real-time
+Exec=eth-gnome
+Icon=accessories-calculator
+Type=Application
+Categories=Utility;
+Terminal=false

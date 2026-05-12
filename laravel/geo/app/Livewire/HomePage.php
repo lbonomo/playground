@@ -42,7 +42,7 @@ class HomePage extends Component
                 $point->longitude
             );
             return $point;
-        })->sortBy('distance')->take(20)->values()->toArray();
+        })->sortBy('distance')->take(2)->values()->toArray();
     }
 
     private function calculateDistance($lat1, $lon1, $lat2, $lon2)

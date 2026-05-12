@@ -1,0 +1,26 @@
+services:
+  tor:
+    build: ./tor
+    container_name: tor_service
+    restart: always
+    volumes:
+      - ./tor/torrc:/etc/tor/torrc:ro
+    networks:
+      - tor_net
+
+  privoxy:
+    build: ./privoxy
+    container_name: privoxy_service
+    restart: always
+    ports:
+      - "8118:8118"
+    volumes:
+      - ./privoxy/config:/etc/privoxy/config:ro
+    depends_on:
+      - tor
+    networks:
+      - tor_net
+
+networks:
+  tor_net:
+    driver: bridge
