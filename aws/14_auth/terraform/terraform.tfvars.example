@@ -1,0 +1,11 @@
+# Example Terraform variables
+# Copy this file to terraform.tfvars and modify as needed
+
+aws_region      = "us-east-1"
+environment     = "dev"
+project_name    = "hello-world-api"
+lambda_function_name = "hello-world"
+api_name        = "hello-world-api"
+lambda_runtime  = "python3.11"
+lambda_timeout  = 30
+lambda_memory   = 128

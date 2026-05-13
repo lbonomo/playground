@@ -1,0 +1,10 @@
+name: DEV
+variables:
+  - name: API_URL
+    value: https://oijh69vkf0.execute-api.us-east-1.amazonaws.com/dev
+  - name: REGION
+    value: us-east-1
+  - secret: true
+    name: AWS_ACCESS_KEY_ID
+  - secret: true
+    name: AWS_SECRET_ACCESS_KEY
